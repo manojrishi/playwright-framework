@@ -1,0 +1,512 @@
+[
+  {
+    "id": "TC-HSP-001",
+    "status": "fail",
+    "comment": "Add New button did not open a form modal"
+  },
+  {
+    "id": "TC-HSP-003",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-HSP-004",
+    "status": "pass",
+    "comment": "Form blocked submission without Hospital Code"
+  },
+  {
+    "id": "TC-HSP-005",
+    "status": "pass",
+    "comment": "Form blocked submission without Hospital Name"
+  },
+  {
+    "id": "TC-HSP-006",
+    "status": "pass",
+    "comment": "Form blocked submission without Internal ID"
+  },
+  {
+    "id": "TC-HSP-008",
+    "status": "pass",
+    "comment": "Valid email accepted without inline error"
+  },
+  {
+    "id": "TC-HSP-010",
+    "status": "fail",
+    "comment": "Field showed \"\" instead of \"ALPHA123\""
+  },
+  {
+    "id": "TC-HSP-011",
+    "status": "pass",
+    "comment": "Hospital record visible with correct data"
+  },
+  {
+    "id": "TC-HSP-012",
+    "status": "pending",
+    "comment": "Edit button not found in Hospital row — UI may use different interaction pattern"
+  },
+  {
+    "id": "TC-HSP-014",
+    "status": "pass",
+    "comment": "Search returned matching record for \"AutoHospital_DF4169\""
+  },
+  {
+    "id": "TC-HSP-015",
+    "status": "pass",
+    "comment": "Search for non-existent name showed empty state"
+  },
+  {
+    "id": "TC-HSP-016",
+    "status": "pass",
+    "comment": "Form opened with all fields empty"
+  },
+  {
+    "id": "TC-HSP-017",
+    "status": "pass",
+    "comment": "Form closed on Escape key"
+  },
+  {
+    "id": "TC-HSP-018",
+    "status": "pass",
+    "comment": "URL: https://zel3-sarapspstaging.zelthy.in/app/hospital"
+  },
+  {
+    "id": "TC-HSP-019",
+    "status": "pass",
+    "comment": "Hospital list loaded with table/grid"
+  },
+  {
+    "id": "TC-HCP-001",
+    "status": "fail",
+    "comment": "HCP Add New did not open a form modal"
+  },
+  {
+    "id": "TC-HCP-003",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-HCP-005",
+    "status": "pass",
+    "comment": "Form blocked without Hospital selection"
+  },
+  {
+    "id": "TC-HCP-006",
+    "status": "pass",
+    "comment": "Invalid email on HCP form blocked submission"
+  },
+  {
+    "id": "TC-HCP-007",
+    "status": "pending",
+    "comment": "Phone tel input not found — cannot verify numeric acceptance"
+  },
+  {
+    "id": "TC-HCP-008",
+    "status": "pending",
+    "comment": "Phone tel input not found — cannot test non-numeric rejection"
+  },
+  {
+    "id": "TC-HCP-009",
+    "status": "pending",
+    "comment": "Hospital dropdown control not found in HCP form"
+  },
+  {
+    "id": "TC-HCP-010",
+    "status": "pass",
+    "comment": "Typing hospital name filtered and showed matching option"
+  },
+  {
+    "id": "TC-HCP-011",
+    "status": "pending",
+    "comment": "Could not identify Speciality dropdown — fewer than 2 dropdowns in form"
+  },
+  {
+    "id": "TC-HCP-012",
+    "status": "fail",
+    "comment": "Could not select Dermatology from Speciality dropdown"
+  },
+  {
+    "id": "TC-HCP-013",
+    "status": "fail",
+    "comment": "Speciality dropdown filter did not respond to typed input"
+  },
+  {
+    "id": "TC-HCP-015",
+    "status": "fail",
+    "comment": "\"AutoHCP_DF4169\" not found in HCP list — may be on different page"
+  },
+  {
+    "id": "TC-HCP-016",
+    "status": "pending",
+    "comment": "HCP row for \"AutoHCP_DF4169\" not visible in current list view"
+  },
+  {
+    "id": "TC-HCP-018",
+    "status": "fail",
+    "comment": "Search did not return \"AutoHCP_DF4169\""
+  },
+  {
+    "id": "TC-HCP-019",
+    "status": "pass",
+    "comment": "HCP form opened with empty fields"
+  },
+  {
+    "id": "TC-HCP-020",
+    "status": "pass",
+    "comment": "URL: https://zel3-sarapspstaging.zelthy.in/app/hcp"
+  },
+  {
+    "id": "TC-HCP-021",
+    "status": "pass",
+    "comment": "HCP list loaded with table/grid"
+  },
+  {
+    "id": "TC-AFB-001",
+    "status": "fail",
+    "comment": "AF Bodies Add New did not open a form modal"
+  },
+  {
+    "id": "TC-AFB-002",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-AFB-003",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-AFB-004",
+    "status": "fail",
+    "comment": "Form submitted without AF Body Name — no error"
+  },
+  {
+    "id": "TC-AFB-005",
+    "status": "fail",
+    "comment": "Form submitted without Internal ID — no error"
+  },
+  {
+    "id": "TC-AFB-006",
+    "status": "pending",
+    "comment": "Follow-Up Timeline dropdown element not found — UI may use different component"
+  },
+  {
+    "id": "TC-AFB-007",
+    "status": "pass",
+    "comment": "Weekly selected in Follow-Up Timeline"
+  },
+  {
+    "id": "TC-AFB-008",
+    "status": "pass",
+    "comment": "Monthly timeline selection attempted"
+  },
+  {
+    "id": "TC-AFB-009",
+    "status": "fail",
+    "comment": "Blank form submitted without validation"
+  },
+  {
+    "id": "TC-AFB-010",
+    "status": "pass",
+    "comment": "AF Body record visible with correct data"
+  },
+  {
+    "id": "TC-AFB-011",
+    "status": "pending",
+    "comment": "Edit button not found in AF Bodies row"
+  },
+  {
+    "id": "TC-AFB-013",
+    "status": "pass",
+    "comment": "Search returned \"AutoAFBodies_DF4169\""
+  },
+  {
+    "id": "TC-AFB-014",
+    "status": "pass",
+    "comment": "AF Bodies form opened with empty fields"
+  },
+  {
+    "id": "TC-AFB-015",
+    "status": "pass",
+    "comment": "AF Bodies list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/af-body"
+  },
+  {
+    "id": "TC-BUM-001",
+    "status": "fail",
+    "comment": "Bumi Agents Add New did not open form modal"
+  },
+  {
+    "id": "TC-BUM-003",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-BUM-004",
+    "status": "fail",
+    "comment": "Form submitted without Agent Name — no error"
+  },
+  {
+    "id": "TC-BUM-005",
+    "status": "fail",
+    "comment": "Form submitted without Internal ID — no error"
+  },
+  {
+    "id": "TC-BUM-006",
+    "status": "pending",
+    "comment": "Contact Number field not found by known placeholders"
+  },
+  {
+    "id": "TC-BUM-007",
+    "status": "pending",
+    "comment": "Contact Number field not found — cannot test non-numeric rejection"
+  },
+  {
+    "id": "TC-BUM-009",
+    "status": "fail",
+    "comment": "Blank form submitted without validation"
+  },
+  {
+    "id": "TC-BUM-010",
+    "status": "pass",
+    "comment": "Bumi Agent visible with correct data"
+  },
+  {
+    "id": "TC-BUM-011",
+    "status": "pending",
+    "comment": "Edit button not found in Bumi Agents row"
+  },
+  {
+    "id": "TC-BUM-013",
+    "status": "pass",
+    "comment": "Search returned \"AutoBumiAgent_DF4169\""
+  },
+  {
+    "id": "TC-BUM-014",
+    "status": "pass",
+    "comment": "Bumi Agents form opened with empty fields"
+  },
+  {
+    "id": "TC-BUM-015",
+    "status": "pass",
+    "comment": "Bumi Agents list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/bhumi-agent"
+  },
+  {
+    "id": "TC-BUM-016",
+    "status": "pass",
+    "comment": "10 column headers visible in Bumi Agents list"
+  },
+  {
+    "id": "TC-PAT-001",
+    "status": "pass",
+    "comment": ""
+  },
+  {
+    "id": "TC-PAT-002",
+    "status": "fail",
+    "comment": "Patient form did not close or show success after all mandatory fields — check screenshot"
+  },
+  {
+    "id": "TC-PAT-003",
+    "status": "fail",
+    "comment": "Patient \"AutoPatient DF4169\" not found in list"
+  },
+  {
+    "id": "TC-PAT-004",
+    "status": "pass",
+    "comment": "Form blocked without Patient Name"
+  },
+  {
+    "id": "TC-PAT-005",
+    "status": "pass",
+    "comment": "Form blocked without NRiC"
+  },
+  {
+    "id": "TC-PAT-006",
+    "status": "fail",
+    "comment": "NRiC accepted \"ABCDEF123456\" — value: \"ABCDEF123456\""
+  },
+  {
+    "id": "TC-PAT-007",
+    "status": "fail",
+    "comment": "NRiC field accepted 16 digits without a maximum limit"
+  },
+  {
+    "id": "TC-PAT-008",
+    "status": "pass",
+    "comment": "Valid 9-digit phone accepted in Contact Number"
+  },
+  {
+    "id": "TC-PAT-009",
+    "status": "fail",
+    "comment": "Field accepted \"abcdefghi\" — value: \"abcdefghi\""
+  },
+  {
+    "id": "TC-PAT-010",
+    "status": "pass",
+    "comment": "Valid email accepted without inline error"
+  },
+  {
+    "id": "TC-PAT-011",
+    "status": "pass",
+    "comment": "Invalid email on Patient form blocked submission"
+  },
+  {
+    "id": "TC-PAT-012",
+    "status": "pass",
+    "comment": "Indication dropdown shows 14 option(s)"
+  },
+  {
+    "id": "TC-PAT-013",
+    "status": "pass",
+    "comment": "PsO selected and retained in Indication field"
+  },
+  {
+    "id": "TC-PAT-014",
+    "status": "pass",
+    "comment": "Hospital dropdown shows 39 option(s)"
+  },
+  {
+    "id": "TC-PAT-015",
+    "status": "pass",
+    "comment": "Typing hospital name filtered and showed matching option"
+  },
+  {
+    "id": "TC-PAT-016",
+    "status": "pass",
+    "comment": "HCP dropdown shows 1 option(s) after Hospital selected"
+  },
+  {
+    "id": "TC-PAT-017",
+    "status": "fail",
+    "comment": "HCP dropdown filter did not show matching results"
+  },
+  {
+    "id": "TC-PAT-018",
+    "status": "pass",
+    "comment": "HCP dropdown shows 1 HCP(s) linked to selected hospital"
+  },
+  {
+    "id": "TC-PAT-019",
+    "status": "pending",
+    "comment": "Conditional HCP reset on hospital change — requires manual verification of app behavior"
+  },
+  {
+    "id": "TC-PAT-020",
+    "status": "pass",
+    "comment": "PDF consent form uploaded via file chooser without error"
+  },
+  {
+    "id": "TC-PAT-021",
+    "status": "pending",
+    "comment": "No file input found — cannot test file type rejection"
+  },
+  {
+    "id": "TC-PAT-022",
+    "status": "pass",
+    "comment": "Form blocked submission without Consent Form upload"
+  },
+  {
+    "id": "TC-PAT-023",
+    "status": "pending",
+    "comment": "File input not found — cannot test upload preview"
+  },
+  {
+    "id": "TC-PAT-024",
+    "status": "pass",
+    "comment": "Blank Patient form blocked submission"
+  },
+  {
+    "id": "TC-PAT-025",
+    "status": "pending",
+    "comment": "Cannot retrieve previously used NRiC from created-data.json — NRiC not stored there"
+  },
+  {
+    "id": "TC-PAT-026",
+    "status": "fail",
+    "comment": "\"AutoPatient DF4169\" not found in Patient list — may be on different page"
+  },
+  {
+    "id": "TC-PAT-027",
+    "status": "pending",
+    "comment": "Patient row for \"AutoPatient DF4169\" not visible in list"
+  },
+  {
+    "id": "TC-PAT-029",
+    "status": "pass",
+    "comment": "Search returned matching patient"
+  },
+  {
+    "id": "TC-PAT-030",
+    "status": "pass",
+    "comment": "NRiC search returned records"
+  },
+  {
+    "id": "TC-PAT-031",
+    "status": "pending",
+    "comment": "Hospital filter option not found in filter dropdown"
+  },
+  {
+    "id": "TC-PAT-032",
+    "status": "pending",
+    "comment": "HCP filter UI requires manual investigation — could not determine exact interaction pattern"
+  },
+  {
+    "id": "TC-PAT-033",
+    "status": "pending",
+    "comment": "Clear Filters button not visible — no active filters or button uses different label"
+  },
+  {
+    "id": "TC-PAT-034",
+    "status": "pass",
+    "comment": "Empty state shown for non-existent patient name"
+  },
+  {
+    "id": "TC-PAT-035",
+    "status": "pending",
+    "comment": "Pagination not visible — list may have fewer records than page size or pagination uses different component"
+  },
+  {
+    "id": "TC-PAT-036",
+    "status": "pending",
+    "comment": "Next page button not found — insufficient records for pagination"
+  },
+  {
+    "id": "TC-PAT-037",
+    "status": "pass",
+    "comment": "Patient form opened with all fields empty"
+  },
+  {
+    "id": "TC-PAT-038",
+    "status": "pending",
+    "comment": "Form still open and no confirmation dialog — Escape may not close the modal"
+  },
+  {
+    "id": "TC-PAT-039",
+    "status": "pass",
+    "comment": "URL after navigation: https://zel3-sarapspstaging.zelthy.in/app/patient"
+  },
+  {
+    "id": "TC-PAT-040",
+    "status": "pass",
+    "comment": "24 column headers visible in Patient list"
+  },
+  {
+    "id": "TC-PAT-041",
+    "status": "pass",
+    "comment": "Validation errors shown on invalid patient form submission"
+  },
+  {
+    "id": "TC-PAT-042",
+    "status": "pass",
+    "comment": "Field-level validation error visible below a failing field"
+  },
+  {
+    "id": "TC-PAT-043",
+    "status": "pass",
+    "comment": "Hospital \"AutoHospital_DF4169\" (created in Masters) is selectable in Patient form"
+  },
+  {
+    "id": "TC-PAT-044",
+    "status": "fail",
+    "comment": "\"AutoHCP_DF4169\" not found in HCP dropdown — may not be linked to selected hospital"
+  }
+]

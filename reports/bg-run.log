@@ -1,0 +1,1380 @@
+
+Running 116 tests using 1 worker
+
+=== STEP 1: LOGIN ===
+Clicked "Log in with Password" button
+Login successful. Current URL: https://zel3-sarapspstaging.zelthy.in/app/patient
+Session saved to .auth/session.json
+Current URL after login: https://zel3-sarapspstaging.zelthy.in/app/patient
+  ✓    1 [setup] › tests/auth.setup.ts:7:6 › authenticate (14.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[FAIL] TC-HSP-001 — Add New button did not open a form modal
+  ✘    2 [chromium] › tests/masters-full.spec.ts:64:7 › Masters — Hospital › TC-HSP-001: Clicking Add New on Hospital opens the creation form (10.3s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+  ✘    3 [chromium] › tests/masters-full.spec.ts:74:7 › Masters — Hospital › TC-HSP-002: Create hospital with all mandatory fields — form submits successfully (1.5m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-003
+  ✓    4 [chromium] › tests/masters-full.spec.ts:92:7 › Masters — Hospital › TC-HSP-003: Created hospital appears in Hospital list (12.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-004 — Form blocked submission without Hospital Code
+  ✓    5 [chromium] › tests/masters-full.spec.ts:105:7 › Masters — Hospital › TC-HSP-004: Hospital form blocks submission when Hospital Code is blank (54.3s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-005 — Form blocked submission without Hospital Name
+  ✓    6 [chromium] › tests/masters-full.spec.ts:120:7 › Masters — Hospital › TC-HSP-005: Hospital form blocks submission when Hospital Name is blank (55.1s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-006 — Form blocked submission without Internal ID
+  ✓    7 [chromium] › tests/masters-full.spec.ts:135:7 › Masters — Hospital › TC-HSP-006: Hospital form blocks submission when Internal ID is blank (54.6s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+  ✘    8 [chromium] › tests/masters-full.spec.ts:150:7 › Masters — Hospital › TC-HSP-007: Email field shows error for invalid email format (1.5m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-008 — Valid email accepted without inline error
+  ✓    9 [chromium] › tests/masters-full.spec.ts:167:7 › Masters — Hospital › TC-HSP-008: Valid email format is accepted in the Email field (35.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+  ✘   10 [chromium] › tests/masters-full.spec.ts:180:7 › Masters — Hospital › TC-HSP-009: Submitting blank Hospital form blocks submission with errors (31.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[FAIL] TC-HSP-010 — Field showed "" instead of "ALPHA123"
+  ✓   11 [chromium] › tests/masters-full.spec.ts:193:7 › Masters — Hospital › TC-HSP-010: Hospital Code field accepts alphanumeric characters (50.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-011 — Hospital record visible with correct data
+  ✓   12 [chromium] › tests/masters-full.spec.ts:206:7 › Masters — Hospital › TC-HSP-011: Hospital list displays correct data for created record (11.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PENDING] TC-HSP-012 — Edit button not found in Hospital row — UI may use different interaction pattern
+  ✓   13 [chromium] › tests/masters-full.spec.ts:219:7 › Masters — Hospital › TC-HSP-012: Editing an existing Hospital record saves the updated name (11.9s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+  ✘   14 [chromium] › tests/masters-full.spec.ts:253:7 › Masters — Hospital › TC-HSP-013: Cancel button closes Hospital form without saving (31.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-014 — Search returned matching record for "AutoHospital_DF4169"
+  ✓   15 [chromium] › tests/masters-full.spec.ts:271:7 › Masters — Hospital › TC-HSP-014: Searching by hospital name returns matching records (15.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-015 — Search for non-existent name showed empty state
+  ✓   16 [chromium] › tests/masters-full.spec.ts:290:7 › Masters — Hospital › TC-HSP-015: Searching with a non-existent name shows no results (14.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-016 — Form opened with all fields empty
+  ✓   17 [chromium] › tests/masters-full.spec.ts:308:7 › Masters — Hospital › TC-HSP-016: Hospital form opens with no pre-filled data (50.3s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-017 — Form closed on Escape key
+  ✓   18 [chromium] › tests/masters-full.spec.ts:320:7 › Masters — Hospital › TC-HSP-017: Pressing Escape or clicking overlay closes the Hospital form (11.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-018 — URL: https://zel3-sarapspstaging.zelthy.in/app/hospital
+  ✓   19 [chromium] › tests/masters-full.spec.ts:339:7 › Masters — Hospital › TC-HSP-018: Selecting Hospital from Masters sidebar opens Hospital list page (11.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Hospital
+[PASS] TC-HSP-019 — Hospital list loaded with table/grid
+  ✓   20 [chromium] › tests/masters-full.spec.ts:350:7 › Masters — Hospital › TC-HSP-019: Hospital list page loads and displays a table or list (11.9s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[FAIL] TC-HCP-001 — HCP Add New did not open a form modal
+  ✘   21 [chromium] › tests/masters-full.spec.ts:368:7 › Masters — HCP › TC-HCP-001: Clicking Add New on HCP opens the creation form (10.3s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+  ✘   22 [chromium] › tests/masters-full.spec.ts:378:7 › Masters — HCP › TC-HCP-002: Create HCP with all mandatory fields — form submits successfully (1.5m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-003
+  ✓   23 [chromium] › tests/masters-full.spec.ts:404:7 › Masters — HCP › TC-HCP-003: Created HCP appears in HCP list after submission (13.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+  ✘   24 [chromium] › tests/masters-full.spec.ts:417:7 › Masters — HCP › TC-HCP-004: HCP form blocks submission when HCP Name is blank (30.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-005 — Form blocked without Hospital selection
+  ✓   25 [chromium] › tests/masters-full.spec.ts:430:7 › Masters — HCP › TC-HCP-005: HCP form blocks submission when Hospital is not selected (34.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-006 — Invalid email on HCP form blocked submission
+  ✓   26 [chromium] › tests/masters-full.spec.ts:444:7 › Masters — HCP › TC-HCP-006: HCP email field shows error for invalid email format (55.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PENDING] TC-HCP-007 — Phone tel input not found — cannot verify numeric acceptance
+  ✓   27 [chromium] › tests/masters-full.spec.ts:459:7 › Masters — HCP › TC-HCP-007: Contact Number accepts a valid Malaysian phone number (10.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PENDING] TC-HCP-008 — Phone tel input not found — cannot test non-numeric rejection
+  ✓   28 [chromium] › tests/masters-full.spec.ts:477:7 › Masters — HCP › TC-HCP-008: Contact Number field rejects non-numeric characters (10.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PENDING] TC-HCP-009 — Hospital dropdown control not found in HCP form
+  ✓   29 [chromium] › tests/masters-full.spec.ts:496:7 › Masters — HCP › TC-HCP-009: Hospital dropdown on HCP form loads existing hospitals (10.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-010 — Typing hospital name filtered and showed matching option
+  ✓   30 [chromium] › tests/masters-full.spec.ts:515:7 › Masters — HCP › TC-HCP-010: Typing a hospital name in dropdown filters results (14.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PENDING] TC-HCP-011 — Could not identify Speciality dropdown — fewer than 2 dropdowns in form
+  ✓   31 [chromium] › tests/masters-full.spec.ts:528:7 › Masters — HCP › TC-HCP-011: Speciality dropdown loads available options (12.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[FAIL] TC-HCP-012 — Could not select Dermatology from Speciality dropdown
+  ✓   32 [chromium] › tests/masters-full.spec.ts:548:7 › Masters — HCP › TC-HCP-012: Selecting Dermatology in Speciality dropdown retains the selection (33.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[FAIL] TC-HCP-013 — Speciality dropdown filter did not respond to typed input
+  ✓   33 [chromium] › tests/masters-full.spec.ts:559:7 › Masters — HCP › TC-HCP-013: Typing in Speciality dropdown filters options (32.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+  ✘   34 [chromium] › tests/masters-full.spec.ts:570:7 › Masters — HCP › TC-HCP-014: Submitting blank HCP form blocks submission (30.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[FAIL] TC-HCP-015 — "AutoHCP_DF4169" not found in HCP list — may be on different page
+  ✓   35 [chromium] › tests/masters-full.spec.ts:583:7 › Masters — HCP › TC-HCP-015: HCP list shows correct data for created HCP (11.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PENDING] TC-HCP-016 — HCP row for "AutoHCP_DF4169" not visible in current list view
+  ✓   36 [chromium] › tests/masters-full.spec.ts:595:7 › Masters — HCP › TC-HCP-016: Editing an existing HCP record saves the updated name (11.6s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+  ✘   37 [chromium] › tests/masters-full.spec.ts:629:7 › Masters — HCP › TC-HCP-017: Cancel button closes HCP form without saving (30.6s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[FAIL] TC-HCP-018 — Search did not return "AutoHCP_DF4169"
+  ✓   38 [chromium] › tests/masters-full.spec.ts:647:7 › Masters — HCP › TC-HCP-018: Searching by HCP name returns matching records (13.9s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-019 — HCP form opened with empty fields
+  ✓   39 [chromium] › tests/masters-full.spec.ts:666:7 › Masters — HCP › TC-HCP-019: HCP form opens with no pre-filled data (30.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-020 — URL: https://zel3-sarapspstaging.zelthy.in/app/hcp
+  ✓   40 [chromium] › tests/masters-full.spec.ts:677:7 › Masters — HCP › TC-HCP-020: Navigating via Masters sidebar to HCP opens the HCP list page (11.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: HCP
+[PASS] TC-HCP-021 — HCP list loaded with table/grid
+  ✓   41 [chromium] › tests/masters-full.spec.ts:688:7 › Masters — HCP › TC-HCP-021: HCP list page loads and displays a table or list (11.8s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[FAIL] TC-AFB-001 — AF Bodies Add New did not open a form modal
+  ✘   42 [chromium] › tests/masters-full.spec.ts:706:7 › Masters — AF Bodies › TC-AFB-001: Clicking Add New on AF Bodies opens the creation form (11.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+Selecting follow-up timeline: Weekly
+[PASS] TC-AFB-002
+  ✓   43 [chromium] › tests/masters-full.spec.ts:716:7 › Masters — AF Bodies › TC-AFB-002: Create AF Body with name, internal ID, and Weekly follow-up — submits successfully (1.3m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PASS] TC-AFB-003
+  ✓   44 [chromium] › tests/masters-full.spec.ts:735:7 › Masters — AF Bodies › TC-AFB-003: Created AF Body appears in AF Bodies list (12.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[FAIL] TC-AFB-004 — Form submitted without AF Body Name — no error
+  ✘   45 [chromium] › tests/masters-full.spec.ts:748:7 › Masters — AF Bodies › TC-AFB-004: AF Bodies form blocks submission when AF Body Name is blank (55.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[FAIL] TC-AFB-005 — Form submitted without Internal ID — no error
+  ✘   46 [chromium] › tests/masters-full.spec.ts:764:7 › Masters — AF Bodies › TC-AFB-005: AF Bodies form blocks submission when Internal ID is blank (37.1s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PENDING] TC-AFB-006 — Follow-Up Timeline dropdown element not found — UI may use different component
+  ✓   47 [chromium] › tests/masters-full.spec.ts:778:7 › Masters — AF Bodies › TC-AFB-006: Follow-Up Timeline dropdown loads available options (11.6s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+Selecting follow-up timeline: Weekly
+[PASS] TC-AFB-007 — Weekly selected in Follow-Up Timeline
+  ✓   48 [chromium] › tests/masters-full.spec.ts:796:7 › Masters — AF Bodies › TC-AFB-007: Selecting Weekly as Follow-Up Timeline retains the selection (11.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+Selecting follow-up timeline: Monthly
+[PASS] TC-AFB-008 — Monthly timeline selection attempted
+  ✓   49 [chromium] › tests/masters-full.spec.ts:807:7 › Masters — AF Bodies › TC-AFB-008: Selecting Monthly as Follow-Up Timeline retains the selection (11.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[FAIL] TC-AFB-009 — Blank form submitted without validation
+  ✘   50 [chromium] › tests/masters-full.spec.ts:817:7 › Masters — AF Bodies › TC-AFB-009: Submitting blank AF Bodies form blocks submission (16.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PASS] TC-AFB-010 — AF Body record visible with correct data
+  ✓   51 [chromium] › tests/masters-full.spec.ts:830:7 › Masters — AF Bodies › TC-AFB-010: AF Bodies list shows correct data for created record (18.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PENDING] TC-AFB-011 — Edit button not found in AF Bodies row
+  ✓   52 [chromium] › tests/masters-full.spec.ts:843:7 › Masters — AF Bodies › TC-AFB-011: Editing an existing AF Body record saves the updated name (11.9s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+  ✘   53 [chromium] › tests/masters-full.spec.ts:877:7 › Masters — AF Bodies › TC-AFB-012: Cancel button closes AF Bodies form without saving (32.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PASS] TC-AFB-013 — Search returned "AutoAFBodies_DF4169"
+  ✓   54 [chromium] › tests/masters-full.spec.ts:895:7 › Masters — AF Bodies › TC-AFB-013: Searching by AF Body name returns matching records (14.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PASS] TC-AFB-014 — AF Bodies form opened with empty fields
+  ✓   55 [chromium] › tests/masters-full.spec.ts:914:7 › Masters — AF Bodies › TC-AFB-014: AF Bodies form opens with no pre-filled data (32.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: AF Bodies
+[PASS] TC-AFB-015 — AF Bodies list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/af-body
+  ✓   56 [chromium] › tests/masters-full.spec.ts:925:7 › Masters — AF Bodies › TC-AFB-015: Navigating to AF Bodies opens the list page (12.1s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[FAIL] TC-BUM-001 — Bumi Agents Add New did not open form modal
+  ✘   57 [chromium] › tests/masters-full.spec.ts:944:7 › Masters — Bumi Agents › TC-BUM-001: Clicking Add New on Bumi Agents opens the creation form (11.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+  ✘   58 [chromium] › tests/masters-full.spec.ts:954:7 › Masters — Bumi Agents › TC-BUM-002: Create Bumi Agent with all mandatory fields — form submits successfully (1.5m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-003
+  ✓   59 [chromium] › tests/masters-full.spec.ts:980:7 › Masters — Bumi Agents › TC-BUM-003: Created Bumi Agent appears in Bumi Agents list (12.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[FAIL] TC-BUM-004 — Form submitted without Agent Name — no error
+  ✘   60 [chromium] › tests/masters-full.spec.ts:993:7 › Masters — Bumi Agents › TC-BUM-004: Bumi Agents form blocks submission when Agent Name is blank (35.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[FAIL] TC-BUM-005 — Form submitted without Internal ID — no error
+  ✘   61 [chromium] › tests/masters-full.spec.ts:1007:7 › Masters — Bumi Agents › TC-BUM-005: Bumi Agents form blocks submission when Internal ID is blank (35.9s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PENDING] TC-BUM-006 — Contact Number field not found by known placeholders
+  ✓   62 [chromium] › tests/masters-full.spec.ts:1021:7 › Masters — Bumi Agents › TC-BUM-006: Contact Number accepts a valid Malaysian phone number (11.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PENDING] TC-BUM-007 — Contact Number field not found — cannot test non-numeric rejection
+  ✓   63 [chromium] › tests/masters-full.spec.ts:1046:7 › Masters — Bumi Agents › TC-BUM-007: Contact Number field rejects non-numeric characters (11.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+  ✘   64 [chromium] › tests/masters-full.spec.ts:1071:7 › Masters — Bumi Agents › TC-BUM-008: Email field shows error for invalid email format (1.5m)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[FAIL] TC-BUM-009 — Blank form submitted without validation
+  ✘   65 [chromium] › tests/masters-full.spec.ts:1089:7 › Masters — Bumi Agents › TC-BUM-009: Submitting blank Bumi Agents form blocks submission (15.7s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-010 — Bumi Agent visible with correct data
+  ✓   66 [chromium] › tests/masters-full.spec.ts:1102:7 › Masters — Bumi Agents › TC-BUM-010: Bumi Agents list shows correct data for created record (12.3s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PENDING] TC-BUM-011 — Edit button not found in Bumi Agents row
+  ✓   67 [chromium] › tests/masters-full.spec.ts:1115:7 › Masters — Bumi Agents › TC-BUM-011: Editing a Bumi Agent record saves the updated name (13.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+  ✘   68 [chromium] › tests/masters-full.spec.ts:1149:7 › Masters — Bumi Agents › TC-BUM-012: Cancel button closes Bumi Agents form without saving (31.4s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-013 — Search returned "AutoBumiAgent_DF4169"
+  ✓   69 [chromium] › tests/masters-full.spec.ts:1167:7 › Masters — Bumi Agents › TC-BUM-013: Searching by Bumi Agent name returns matching records (14.2s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-014 — Bumi Agents form opened with empty fields
+  ✓   70 [chromium] › tests/masters-full.spec.ts:1186:7 › Masters — Bumi Agents › TC-BUM-014: Bumi Agents form opens with no pre-filled data (33.0s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-015 — Bumi Agents list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/bhumi-agent
+  ✓   71 [chromium] › tests/masters-full.spec.ts:1197:7 › Masters — Bumi Agents › TC-BUM-015: Navigating to Bumi Agents opens the list page (11.5s)
+Navigating to Masters module...
+Navigating to sidebar module: Masters
+Opening master section: Bumi Agents
+[PASS] TC-BUM-016 — 10 column headers visible in Bumi Agents list
+  ✓   72 [chromium] › tests/masters-full.spec.ts:1208:7 › Masters — Bumi Agents › TC-BUM-016: Bumi Agents list page displays column headers (11.7s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-001
+  ✓   73 [chromium] › tests/patient-full.spec.ts:62:7 › Patient Module › TC-PAT-001: Clicking Add New Patient opens the Patient registration form (10.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[FAIL] TC-PAT-002 — Patient form did not close or show success after all mandatory fields — check screenshot
+  ✘   74 [chromium] › tests/patient-full.spec.ts:72:7 › Patient Module › TC-PAT-002: Create patient with all mandatory fields — form submits successfully (27.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[FAIL] TC-PAT-003 — Patient "AutoPatient DF4169" not found in list
+  ✘   75 [chromium] › tests/patient-full.spec.ts:125:7 › Patient Module › TC-PAT-003: Created patient appears in Patient list after submission (11.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-004 — Form blocked without Patient Name
+  ✓   76 [chromium] › tests/patient-full.spec.ts:138:7 › Patient Module › TC-PAT-004: Patient form blocks submission when Patient Name is blank (15.1s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-005 — Form blocked without NRiC
+  ✓   77 [chromium] › tests/patient-full.spec.ts:151:7 › Patient Module › TC-PAT-005: Patient form blocks submission when NRiC is blank (16.6s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[FAIL] TC-PAT-006 — NRiC accepted "ABCDEF123456" — value: "ABCDEF123456"
+  ✓   78 [chromium] › tests/patient-full.spec.ts:164:7 › Patient Module › TC-PAT-006: NRiC field accepts only numeric characters (11.1s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[FAIL] TC-PAT-007 — NRiC field accepted 16 digits without a maximum limit
+  ✓   79 [chromium] › tests/patient-full.spec.ts:182:7 › Patient Module › TC-PAT-007: NRiC field enforces a 12-digit maximum length (11.0s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-008 — Valid 9-digit phone accepted in Contact Number
+  ✓   80 [chromium] › tests/patient-full.spec.ts:203:7 › Patient Module › TC-PAT-008: Contact Number accepts a valid Malaysian phone number (11.6s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[FAIL] TC-PAT-009 — Field accepted "abcdefghi" — value: "abcdefghi"
+  ✓   81 [chromium] › tests/patient-full.spec.ts:220:7 › Patient Module › TC-PAT-009: Contact Number field rejects non-numeric characters (11.0s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-010 — Valid email accepted without inline error
+  ✓   82 [chromium] › tests/patient-full.spec.ts:238:7 › Patient Module › TC-PAT-010: Email field accepts valid email format without error (11.3s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-011 — Invalid email on Patient form blocked submission
+  ✓   83 [chromium] › tests/patient-full.spec.ts:250:7 › Patient Module › TC-PAT-011: Email field shows error for invalid email format (14.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-012 — Indication dropdown shows 14 option(s)
+  ✓   84 [chromium] › tests/patient-full.spec.ts:265:7 › Patient Module › TC-PAT-012: Indication dropdown loads and displays available options (11.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-013 — PsO selected and retained in Indication field
+  ✓   85 [chromium] › tests/patient-full.spec.ts:283:7 › Patient Module › TC-PAT-013: Selecting PsO as Indication retains the selection (14.0s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-014 — Hospital dropdown shows 39 option(s)
+  ✓   86 [chromium] › tests/patient-full.spec.ts:293:7 › Patient Module › TC-PAT-014: Hospital Name dropdown loads existing hospitals (13.2s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-015 — Typing hospital name filtered and showed matching option
+  ✓   87 [chromium] › tests/patient-full.spec.ts:313:7 › Patient Module › TC-PAT-015: Typing a hospital name in dropdown filters results (14.1s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-016 — HCP dropdown shows 1 option(s) after Hospital selected
+  ✓   88 [chromium] › tests/patient-full.spec.ts:325:7 › Patient Module › TC-PAT-016: HCP Name dropdown loads HCPs after a Hospital is selected (16.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[FAIL] TC-PAT-017 — HCP dropdown filter did not show matching results
+  ✓   89 [chromium] › tests/patient-full.spec.ts:347:7 › Patient Module › TC-PAT-017: Typing an HCP name in dropdown filters results (18.6s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-018 — HCP dropdown shows 1 HCP(s) linked to selected hospital
+  ✓   90 [chromium] › tests/patient-full.spec.ts:362:7 › Patient Module › TC-PAT-018: HCP dropdown shows only HCPs linked to the selected Hospital (19.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PENDING] TC-PAT-019 — Conditional HCP reset on hospital change — requires manual verification of app behavior
+  ✓   91 [chromium] › tests/patient-full.spec.ts:387:7 › Patient Module › TC-PAT-019: Changing selected Hospital resets or clears the HCP field (19.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-020 — PDF consent form uploaded via file chooser without error
+  ✓   92 [chromium] › tests/patient-full.spec.ts:413:7 › Patient Module › TC-PAT-020: Valid PDF file is accepted as Consent Form upload (11.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PENDING] TC-PAT-021 — No file input found — cannot test file type rejection
+  ✓   93 [chromium] › tests/patient-full.spec.ts:448:7 › Patient Module › TC-PAT-021: Non-PDF file type is rejected with an error for Consent Form upload (11.0s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-022 — Form blocked submission without Consent Form upload
+  ✓   94 [chromium] › tests/patient-full.spec.ts:472:7 › Patient Module › TC-PAT-022: Submitting Patient form without Consent Form blocks submission (25.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PENDING] TC-PAT-023 — File input not found — cannot test upload preview
+  ✓   95 [chromium] › tests/patient-full.spec.ts:497:7 › Patient Module › TC-PAT-023: Consent Form shows file name or preview after successful upload (10.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-024 — Blank Patient form blocked submission
+  ✓   96 [chromium] › tests/patient-full.spec.ts:515:7 › Patient Module › TC-PAT-024: Submitting blank Patient form blocks submission with errors (15.1s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PENDING] TC-PAT-025 — Cannot retrieve previously used NRiC from created-data.json — NRiC not stored there
+  ✓   97 [chromium] › tests/patient-full.spec.ts:527:7 › Patient Module › TC-PAT-025: Duplicate NRiC is rejected with an appropriate error (10.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[FAIL] TC-PAT-026 — "AutoPatient DF4169" not found in Patient list — may be on different page
+  ✓   98 [chromium] › tests/patient-full.spec.ts:545:7 › Patient Module › TC-PAT-026: Patient list shows correct data for created patient record (12.2s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-027 — Patient row for "AutoPatient DF4169" not visible in list
+  ✓   99 [chromium] › tests/patient-full.spec.ts:557:7 › Patient Module › TC-PAT-027: Editing a Patient record saves the updated Contact Number (11.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+  ✘  100 [chromium] › tests/patient-full.spec.ts:592:7 › Patient Module › TC-PAT-028: Cancel button closes Patient form without saving (11.6s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PASS] TC-PAT-029 — Search returned matching patient
+  ✓  101 [chromium] › tests/patient-full.spec.ts:609:7 › Patient Module › TC-PAT-029: Searching by patient name returns matching records (14.1s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PASS] TC-PAT-030 — NRiC search returned records
+  ✓  102 [chromium] › tests/patient-full.spec.ts:628:7 › Patient Module › TC-PAT-030: Searching by NRiC returns the matching patient (13.7s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-031 — Hospital filter option not found in filter dropdown
+  ✓  103 [chromium] › tests/patient-full.spec.ts:646:7 › Patient Module › TC-PAT-031: Filtering Patient list by Hospital shows relevant patients (12.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-032 — HCP filter UI requires manual investigation — could not determine exact interaction pattern
+  ✓  104 [chromium] › tests/patient-full.spec.ts:670:7 › Patient Module › TC-PAT-032: Filtering Patient list by HCP shows relevant patients (11.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-033 — Clear Filters button not visible — no active filters or button uses different label
+  ✓  105 [chromium] › tests/patient-full.spec.ts:682:7 › Patient Module › TC-PAT-033: Clear Filters button resets all active filters on Patient list (11.5s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PASS] TC-PAT-034 — Empty state shown for non-existent patient name
+  ✓  106 [chromium] › tests/patient-full.spec.ts:696:7 › Patient Module › TC-PAT-034: Searching for a non-existent name shows empty state or no results (13.6s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-035 — Pagination not visible — list may have fewer records than page size or pagination uses different component
+  ✓  107 [chromium] › tests/patient-full.spec.ts:714:7 › Patient Module › TC-PAT-035: Patient list displays pagination controls when records exceed page size (11.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PENDING] TC-PAT-036 — Next page button not found — insufficient records for pagination
+  ✓  108 [chromium] › tests/patient-full.spec.ts:724:7 › Patient Module › TC-PAT-036: Navigating to next page on Patient list shows next set of records (11.7s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-037 — Patient form opened with all fields empty
+  ✓  109 [chromium] › tests/patient-full.spec.ts:741:7 › Patient Module › TC-PAT-037: Patient form opens with no pre-filled data when Add New Patient is clicked (10.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PENDING] TC-PAT-038 — Form still open and no confirmation dialog — Escape may not close the modal
+  ✓  110 [chromium] › tests/patient-full.spec.ts:752:7 › Patient Module › TC-PAT-038: Pressing Escape or clicking overlay on Patient form handles unsaved data (13.8s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PASS] TC-PAT-039 — URL after navigation: https://zel3-sarapspstaging.zelthy.in/app/patient
+  ✓  111 [chromium] › tests/patient-full.spec.ts:766:7 › Patient Module › TC-PAT-039: Clicking Patient in the sidebar navigates to Patient list page (11.2s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+[PASS] TC-PAT-040 — 24 column headers visible in Patient list
+  ✓  112 [chromium] › tests/patient-full.spec.ts:776:7 › Patient Module › TC-PAT-040: Patient list page loads and displays column headers (11.5s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-041 — Validation errors shown on invalid patient form submission
+  ✓  113 [chromium] › tests/patient-full.spec.ts:786:7 › Patient Module › TC-PAT-041: Validation error summary appears near Submit button on invalid submission (15.3s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+Submitting patient form...
+[PASS] TC-PAT-042 — Field-level validation error visible below a failing field
+  ✓  114 [chromium] › tests/patient-full.spec.ts:799:7 › Patient Module › TC-PAT-042: Individual field-level validation errors appear below failing fields (14.9s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[PASS] TC-PAT-043 — Hospital "AutoHospital_DF4169" (created in Masters) is selectable in Patient form
+  ✓  115 [chromium] › tests/patient-full.spec.ts:811:7 › Patient Module › TC-PAT-043: Hospital created in Masters is selectable in Patient Hospital dropdown (15.0s)
+Navigating to Patient module...
+Navigating to sidebar module: Patient
+Clicking Add New Patient...
+Patient form/modal is open
+[FAIL] TC-PAT-044 — "AutoHCP_DF4169" not found in HCP dropdown — may not be linked to selected hospital
+  ✓  116 [chromium] › tests/patient-full.spec.ts:824:7 › Patient Module › TC-PAT-044: HCP created in Masters is selectable in Patient HCP dropdown after Hospital selection (22.1s)
+
+
+  1) [chromium] › tests/masters-full.spec.ts:64:7 › Masters — Hospital › TC-HSP-001: Clicking Add New on Hospital opens the creation form 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      69 |     const visible = await modal.isVisible({ timeout: 8000 }).catch(() => false);
+      70 |     saveResult('TC-HSP-001', visible ? 'pass' : 'fail', visible ? '' : 'Add New button did not open a form modal');
+    > 71 |     expect(visible).toBeTruthy();
+         |                     ^
+      72 |   });
+      73 |
+      74 |   test('TC-HSP-002: Create hospital with all mandatory fields — form submits successfully', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:71:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Hos-f7b9a-tal-opens-the-creation-form-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Hos-f7b9a-tal-opens-the-creation-form-chromium/error-context.md
+
+  2) [chromium] › tests/masters-full.spec.ts:74:7 › Masters — Hospital › TC-HSP-002: Create hospital with all mandatory fields — form submits successfully 
+
+    [31mTest timeout of 90000ms exceeded.[39m
+
+    Error: page.waitForTimeout: Target page, context or browser has been closed
+
+      82 |     await modal.getByPlaceholder('Hospital Internal ID').fill(`HO${SUFFIX}`).catch(() => {});
+      83 |     await mp.submitForm();
+    > 84 |     await page.waitForTimeout(2000);
+         |                ^
+      85 |     const closed = !(await modal.isVisible({ timeout: 3000 }).catch(() => true));
+      86 |     const success = await page.locator(SUCCESS_SEL).first().isVisible({ timeout: 3000 }).catch(() => false);
+      87 |     saveResult('TC-HSP-002', (closed || success) ? 'pass' : 'fail',
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:84:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Hos-7e0e9-—-form-submits-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Hos-7e0e9-—-form-submits-successfully-chromium/error-context.md
+
+  3) [chromium] › tests/masters-full.spec.ts:150:7 › Masters — Hospital › TC-HSP-007: Email field shows error for invalid email format 
+
+    [31mTest timeout of 90000ms exceeded.[39m
+
+    Error: page.waitForTimeout: Target page, context or browser has been closed
+
+      158 |     await modal.getByPlaceholder('Email Address').fill('invalidemail').catch(() => {});
+      159 |     await mp.submitForm();
+    > 160 |     await page.waitForTimeout(2000);
+          |                ^
+      161 |     const blocked = await checkValidation(page, modal);
+      162 |     saveResult('TC-HSP-007', blocked ? 'pass' : 'fail',
+      163 |       blocked ? 'Invalid email format blocked form submission' : 'Form accepted "invalidemail" without error');
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:160:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Hos-900b8-or-for-invalid-email-format-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Hos-900b8-or-for-invalid-email-format-chromium/error-context.md
+
+  4) [chromium] › tests/masters-full.spec.ts:180:7 › Masters — Hospital › TC-HSP-009: Submitting blank Hospital form blocks submission with errors 
+
+    TimeoutError: locator.click: Timeout 20000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button[type="submit"]:has-text("Add"), button:has-text("Add")').first()[22m
+    [2m    - locator resolved to <button class="w-full flex items-center justify-between py-3 text-left transition-colors hover:bg-gray-50 disabled:cursor-default py-2 px-3">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="flex-1 overflow-x-auto overflow-y-auto border-t border-[#e9eaeb] bg-white relative">…</div> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <a data-discover="true" href="/app/bhumi-agent" class="submenu-item d-flex ">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span class="break-words">HO46705</span> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  9 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a data-discover="true" href="/app/bhumi-agent" class="submenu-item d-flex ">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span class="break-words">HO46705</span> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <span class="break-words">HO46705</span> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <a data-discover="true" href="/app/bhumi-agent" class="submenu-item d-flex ">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+       at ../pages/masters.page.ts:180
+
+      178 |           .catch(() => false)
+      179 |       ) {
+    > 180 |         await btn.first().click();
+          |                           ^
+      181 |         await this.page.waitForLoadState("domcontentloaded");
+      182 |         await this.page.waitForTimeout(2000);
+      183 |         return;
+        at MastersPage.submitForm (/Users/tejasdeshmukh/playwright-framework/pages/masters.page.ts:180:27)
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:185:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Hos-2ca22-ocks-submission-with-errors-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Hos-2ca22-ocks-submission-with-errors-chromium/error-context.md
+
+  5) [chromium] › tests/masters-full.spec.ts:253:7 › Masters — Hospital › TC-HSP-013: Cancel button closes Hospital form without saving 
+
+    Error: locator.click: Element is outside of the viewport
+    Call log:
+    [2m  - waiting for locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first()[22m
+    [2m    - locator resolved to <button class="profile-close-btn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+
+
+      259 |     const cancelBtn = page.locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first();
+      260 |     if (await cancelBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+    > 261 |       await cancelBtn.click({ force: true });
+          |                       ^
+      262 |     } else {
+      263 |       await page.keyboard.press('Escape');
+      264 |     }
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:261:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Hos-35d3c-ospital-form-without-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Hos-35d3c-ospital-form-without-saving-chromium/error-context.md
+
+  6) [chromium] › tests/masters-full.spec.ts:368:7 › Masters — HCP › TC-HCP-001: Clicking Add New on HCP opens the creation form 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      373 |     const visible = await modal.isVisible({ timeout: 8000 }).catch(() => false);
+      374 |     saveResult('TC-HCP-001', visible ? 'pass' : 'fail', visible ? '' : 'HCP Add New did not open a form modal');
+    > 375 |     expect(visible).toBeTruthy();
+          |                     ^
+      376 |   });
+      377 |
+      378 |   test('TC-HCP-002: Create HCP with all mandatory fields — form submits successfully', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:375:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-HCP-98517-HCP-opens-the-creation-form-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-HCP-98517-HCP-opens-the-creation-form-chromium/error-context.md
+
+  7) [chromium] › tests/masters-full.spec.ts:378:7 › Masters — HCP › TC-HCP-002: Create HCP with all mandatory fields — form submits successfully 
+
+    [31mTest timeout of 90000ms exceeded.[39m
+
+    Error: page.waitForTimeout: Target page, context or browser has been closed
+
+      394 |     await modal.getByPlaceholder('Email Address').fill(`hcp${SUFFIX}@test.com`).catch(() => {});
+      395 |     await mp.submitForm();
+    > 396 |     await page.waitForTimeout(2000);
+          |                ^
+      397 |     const closed = !(await modal.isVisible({ timeout: 3000 }).catch(() => true));
+      398 |     const success = await page.locator(SUCCESS_SEL).first().isVisible({ timeout: 3000 }).catch(() => false);
+      399 |     saveResult('TC-HCP-002', (closed || success) ? 'pass' : 'fail',
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:396:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-HCP-0ecf7-—-form-submits-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-HCP-0ecf7-—-form-submits-successfully-chromium/error-context.md
+
+  8) [chromium] › tests/masters-full.spec.ts:417:7 › Masters — HCP › TC-HCP-004: HCP form blocks submission when HCP Name is blank 
+
+    TimeoutError: locator.click: Timeout 20000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button[type="submit"]:has-text("Add"), button:has-text("Add")').first()[22m
+    [2m    - locator resolved to <button class="w-full flex items-center justify-between py-3 text-left transition-colors hover:bg-gray-50 disabled:cursor-default py-2 px-3">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="flex-1 overflow-x-auto overflow-y-auto border-t border-[#e9eaeb] bg-white relative">…</div> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not stable[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  9 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a href="/app/task" class="menu-item" data-discover="true">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <a href="/app/task" class="menu-item" data-discover="true">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+       at ../pages/masters.page.ts:180
+
+      178 |           .catch(() => false)
+      179 |       ) {
+    > 180 |         await btn.first().click();
+          |                           ^
+      181 |         await this.page.waitForLoadState("domcontentloaded");
+      182 |         await this.page.waitForTimeout(2000);
+      183 |         return;
+        at MastersPage.submitForm (/Users/tejasdeshmukh/playwright-framework/pages/masters.page.ts:180:27)
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:422:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-HCP-daf92-sion-when-HCP-Name-is-blank-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-HCP-daf92-sion-when-HCP-Name-is-blank-chromium/error-context.md
+
+  9) [chromium] › tests/masters-full.spec.ts:570:7 › Masters — HCP › TC-HCP-014: Submitting blank HCP form blocks submission 
+
+    TimeoutError: locator.click: Timeout 20000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('button[type="submit"]:has-text("Add"), button:has-text("Add")').first()[22m
+    [2m    - locator resolved to <button class="w-full flex items-center justify-between py-3 text-left transition-colors hover:bg-gray-50 disabled:cursor-default py-2 px-3">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="flex-1 overflow-x-auto overflow-y-auto border-t border-[#e9eaeb] bg-white relative">…</div> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <span class="menu-title ">Tasks</span> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  9 × retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <a href="/app/task" class="menu-item" data-discover="true">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <div class="bg-white border-r border-gray-200 flex-shrink-0 transition-all duration-300 ease-in-out w-0 overflow-hidden">…</div> intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m    - retrying click action[22m
+    [2m      - waiting 500ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is visible, enabled and stable[22m
+    [2m      - scrolling into view if needed[22m
+    [2m      - done scrolling[22m
+    [2m      - <td data-column-id="hcp_my_internal_id" class="text-sm text-gray-900 px-3 py-3 h-[64px] min-h-[64px] overflow-hidden border-r border-gray-200 last:border-r-0">…</td> from <div class="flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out">…</div> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - <a href="/app/task" class="menu-item" data-discover="true">…</a> from <nav class="navbar wide-sidebar ">…</nav> subtree intercepts pointer events[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+
+
+       at ../pages/masters.page.ts:180
+
+      178 |           .catch(() => false)
+      179 |       ) {
+    > 180 |         await btn.first().click();
+          |                           ^
+      181 |         await this.page.waitForLoadState("domcontentloaded");
+      182 |         await this.page.waitForTimeout(2000);
+      183 |         return;
+        at MastersPage.submitForm (/Users/tejasdeshmukh/playwright-framework/pages/masters.page.ts:180:27)
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:575:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-HCP-8ef0e--HCP-form-blocks-submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-HCP-8ef0e--HCP-form-blocks-submission-chromium/error-context.md
+
+  10) [chromium] › tests/masters-full.spec.ts:629:7 › Masters — HCP › TC-HCP-017: Cancel button closes HCP form without saving 
+
+    Error: locator.click: Element is outside of the viewport
+    Call log:
+    [2m  - waiting for locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first()[22m
+    [2m    - locator resolved to <button class="profile-close-btn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+
+
+      635 |     const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first();
+      636 |     if (await cancel.isVisible({ timeout: 3000 }).catch(() => false)) {
+    > 637 |       await cancel.click({ force: true });
+          |                    ^
+      638 |     } else {
+      639 |       await page.keyboard.press('Escape');
+      640 |     }
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:637:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-HCP-dc17a-ses-HCP-form-without-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-HCP-dc17a-ses-HCP-form-without-saving-chromium/error-context.md
+
+  11) [chromium] › tests/masters-full.spec.ts:706:7 › Masters — AF Bodies › TC-AFB-001: Clicking Add New on AF Bodies opens the creation form 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      711 |     const visible = await modal.isVisible({ timeout: 8000 }).catch(() => false);
+      712 |     saveResult('TC-AFB-001', visible ? 'pass' : 'fail', visible ? '' : 'AF Bodies Add New did not open a form modal');
+    > 713 |     expect(visible).toBeTruthy();
+          |                     ^
+      714 |   });
+      715 |
+      716 |   test('TC-AFB-002: Create AF Body with name, internal ID, and Weekly follow-up — submits successfully', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:713:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-AF--b1d68-ies-opens-the-creation-form-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-AF--b1d68-ies-opens-the-creation-form-chromium/error-context.md
+
+  12) [chromium] › tests/masters-full.spec.ts:748:7 › Masters — AF Bodies › TC-AFB-004: AF Bodies form blocks submission when AF Body Name is blank 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      759 |     saveResult('TC-AFB-004', blocked ? 'pass' : 'fail',
+      760 |       blocked ? 'Form blocked without AF Body Name' : 'Form submitted without AF Body Name — no error');
+    > 761 |     expect(blocked).toBeTruthy();
+          |                     ^
+      762 |   });
+      763 |
+      764 |   test('TC-AFB-005: AF Bodies form blocks submission when Internal ID is blank', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:761:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-AF--3db9b--when-AF-Body-Name-is-blank-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-AF--3db9b--when-AF-Body-Name-is-blank-chromium/error-context.md
+
+  13) [chromium] › tests/masters-full.spec.ts:764:7 › Masters — AF Bodies › TC-AFB-005: AF Bodies form blocks submission when Internal ID is blank 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      773 |     saveResult('TC-AFB-005', blocked ? 'pass' : 'fail',
+      774 |       blocked ? 'Form blocked without Internal ID' : 'Form submitted without Internal ID — no error');
+    > 775 |     expect(blocked).toBeTruthy();
+          |                     ^
+      776 |   });
+      777 |
+      778 |   test('TC-AFB-006: Follow-Up Timeline dropdown loads available options', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:775:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-AF--bbd4a-n-when-Internal-ID-is-blank-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-AF--bbd4a-n-when-Internal-ID-is-blank-chromium/error-context.md
+
+  14) [chromium] › tests/masters-full.spec.ts:817:7 › Masters — AF Bodies › TC-AFB-009: Submitting blank AF Bodies form blocks submission 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      825 |     saveResult('TC-AFB-009', open ? 'pass' : 'fail',
+      826 |       open ? 'Blank AF Bodies form blocked submission' : 'Blank form submitted without validation');
+    > 827 |     expect(open).toBeTruthy();
+          |                  ^
+      828 |   });
+      829 |
+      830 |   test('TC-AFB-010: AF Bodies list shows correct data for created record', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:827:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-AF--2f539-dies-form-blocks-submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-AF--2f539-dies-form-blocks-submission-chromium/error-context.md
+
+  15) [chromium] › tests/masters-full.spec.ts:877:7 › Masters — AF Bodies › TC-AFB-012: Cancel button closes AF Bodies form without saving 
+
+    Error: locator.click: Element is outside of the viewport
+    Call log:
+    [2m  - waiting for locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first()[22m
+    [2m    - locator resolved to <button class="profile-close-btn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+
+
+      883 |     const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first();
+      884 |     if (await cancel.isVisible({ timeout: 3000 }).catch(() => false)) {
+    > 885 |       await cancel.click({ force: true });
+          |                    ^
+      886 |     } else {
+      887 |       await page.keyboard.press('Escape');
+      888 |     }
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:885:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-AF--747d8--Bodies-form-without-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-AF--747d8--Bodies-form-without-saving-chromium/error-context.md
+
+  16) [chromium] › tests/masters-full.spec.ts:944:7 › Masters — Bumi Agents › TC-BUM-001: Clicking Add New on Bumi Agents opens the creation form 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      949 |     const visible = await modal.isVisible({ timeout: 8000 }).catch(() => false);
+      950 |     saveResult('TC-BUM-001', visible ? 'pass' : 'fail', visible ? '' : 'Bumi Agents Add New did not open form modal');
+    > 951 |     expect(visible).toBeTruthy();
+          |                     ^
+      952 |   });
+      953 |
+      954 |   test('TC-BUM-002: Create Bumi Agent with all mandatory fields — form submits successfully', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:951:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-2ae70-nts-opens-the-creation-form-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-2ae70-nts-opens-the-creation-form-chromium/error-context.md
+
+  17) [chromium] › tests/masters-full.spec.ts:954:7 › Masters — Bumi Agents › TC-BUM-002: Create Bumi Agent with all mandatory fields — form submits successfully 
+
+    [31mTest timeout of 90000ms exceeded.[39m
+
+    Error: page.waitForTimeout: Target page, context or browser has been closed
+
+      970 |     );
+      971 |     await mp.submitForm();
+    > 972 |     await page.waitForTimeout(2000);
+          |                ^
+      973 |     const closed = !(await modal.isVisible({ timeout: 3000 }).catch(() => true));
+      974 |     const success = await page.locator(SUCCESS_SEL).first().isVisible({ timeout: 3000 }).catch(() => false);
+      975 |     saveResult('TC-BUM-002', (closed || success) ? 'pass' : 'fail',
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:972:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-48d94-—-form-submits-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-48d94-—-form-submits-successfully-chromium/error-context.md
+
+  18) [chromium] › tests/masters-full.spec.ts:993:7 › Masters — Bumi Agents › TC-BUM-004: Bumi Agents form blocks submission when Agent Name is blank 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      1002 |     saveResult('TC-BUM-004', blocked ? 'pass' : 'fail',
+      1003 |       blocked ? 'Form blocked without Agent Name' : 'Form submitted without Agent Name — no error');
+    > 1004 |     expect(blocked).toBeTruthy();
+           |                     ^
+      1005 |   });
+      1006 |
+      1007 |   test('TC-BUM-005: Bumi Agents form blocks submission when Internal ID is blank', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:1004:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-bdb02-on-when-Agent-Name-is-blank-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-bdb02-on-when-Agent-Name-is-blank-chromium/error-context.md
+
+  19) [chromium] › tests/masters-full.spec.ts:1007:7 › Masters — Bumi Agents › TC-BUM-005: Bumi Agents form blocks submission when Internal ID is blank 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      1016 |     saveResult('TC-BUM-005', blocked ? 'pass' : 'fail',
+      1017 |       blocked ? 'Form blocked without Internal ID' : 'Form submitted without Internal ID — no error');
+    > 1018 |     expect(blocked).toBeTruthy();
+           |                     ^
+      1019 |   });
+      1020 |
+      1021 |   test('TC-BUM-006: Contact Number accepts a valid Malaysian phone number', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:1018:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-18a84-n-when-Internal-ID-is-blank-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-18a84-n-when-Internal-ID-is-blank-chromium/error-context.md
+
+  20) [chromium] › tests/masters-full.spec.ts:1071:7 › Masters — Bumi Agents › TC-BUM-008: Email field shows error for invalid email format 
+
+    [31mTest timeout of 90000ms exceeded.[39m
+
+    Error: page.waitForTimeout: Target page, context or browser has been closed
+
+      1080 |     );
+      1081 |     await mp.submitForm();
+    > 1082 |     await page.waitForTimeout(2000);
+           |                ^
+      1083 |     const blocked = await checkValidation(page, modal);
+      1084 |     saveResult('TC-BUM-008', blocked ? 'pass' : 'fail',
+      1085 |       blocked ? 'Invalid email format blocked Bumi Agent form submission' : 'Form accepted invalid email without error');
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:1082:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-5ae6e-or-for-invalid-email-format-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-5ae6e-or-for-invalid-email-format-chromium/error-context.md
+
+  21) [chromium] › tests/masters-full.spec.ts:1089:7 › Masters — Bumi Agents › TC-BUM-009: Submitting blank Bumi Agents form blocks submission 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      1097 |     saveResult('TC-BUM-009', open ? 'pass' : 'fail',
+      1098 |       open ? 'Blank Bumi Agents form blocked submission' : 'Blank form submitted without validation');
+    > 1099 |     expect(open).toBeTruthy();
+           |                  ^
+      1100 |   });
+      1101 |
+      1102 |   test('TC-BUM-010: Bumi Agents list shows correct data for created record', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:1099:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-aab4e-ents-form-blocks-submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-aab4e-ents-form-blocks-submission-chromium/error-context.md
+
+  22) [chromium] › tests/masters-full.spec.ts:1149:7 › Masters — Bumi Agents › TC-BUM-012: Cancel button closes Bumi Agents form without saving 
+
+    Error: locator.click: Element is outside of the viewport
+    Call log:
+    [2m  - waiting for locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first()[22m
+    [2m    - locator resolved to <button class="profile-close-btn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+
+
+      1155 |     const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first();
+      1156 |     if (await cancel.isVisible({ timeout: 3000 }).catch(() => false)) {
+    > 1157 |       await cancel.click({ force: true });
+           |                    ^
+      1158 |     } else {
+      1159 |       await page.keyboard.press('Escape');
+      1160 |     }
+        at /Users/tejasdeshmukh/playwright-framework/tests/masters-full.spec.ts:1157:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/masters-full-Masters-—-Bum-dea76--Agents-form-without-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/masters-full-Masters-—-Bum-dea76--Agents-form-without-saving-chromium/error-context.md
+
+  23) [chromium] › tests/patient-full.spec.ts:72:7 › Patient Module › TC-PAT-002: Create patient with all mandatory fields — form submits successfully 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      120 |     saveResult('TC-PAT-002', (closed || success) ? 'pass' : 'fail',
+      121 |       (closed || success) ? '' : 'Patient form did not close or show success after all mandatory fields — check screenshot');
+    > 122 |     expect(closed || success).toBeTruthy();
+          |                               ^
+      123 |   });
+      124 |
+      125 |   test('TC-PAT-003: Created patient appears in Patient list after submission', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/patient-full.spec.ts:122:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/patient-full-Patient-Modul-269da-—-form-submits-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/patient-full-Patient-Modul-269da-—-form-submits-successfully-chromium/error-context.md
+
+  24) [chromium] › tests/patient-full.spec.ts:125:7 › Patient Module › TC-PAT-003: Created patient appears in Patient list after submission 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeTruthy[2m()[22m
+
+    Received: [31mfalse[39m
+
+      133 |     saveResult('TC-PAT-003', found ? 'pass' : 'fail',
+      134 |       found ? '' : `Patient "${name ?? 'AutoPatient'}" not found in list`);
+    > 135 |     expect(found).toBeTruthy();
+          |                   ^
+      136 |   });
+      137 |
+      138 |   test('TC-PAT-004: Patient form blocks submission when Patient Name is blank', async ({ page }) => {
+        at /Users/tejasdeshmukh/playwright-framework/tests/patient-full.spec.ts:135:19
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/patient-full-Patient-Modul-d46bf-tient-list-after-submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/patient-full-Patient-Modul-d46bf-tient-list-after-submission-chromium/error-context.md
+
+  25) [chromium] › tests/patient-full.spec.ts:592:7 › Patient Module › TC-PAT-028: Cancel button closes Patient form without saving 
+
+    Error: locator.click: Element is outside of the viewport
+    Call log:
+    [2m  - waiting for locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first()[22m
+    [2m    - locator resolved to <button class="profile-close-btn">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+
+
+      597 |     const cancel = page.locator('button:has-text("Cancel"), button:has-text("Close"), [class*="close"]').first();
+      598 |     if (await cancel.isVisible({ timeout: 3000 }).catch(() => false)) {
+    > 599 |       await cancel.click({ force: true });
+          |                    ^
+      600 |     } else {
+      601 |       await page.keyboard.press('Escape');
+      602 |     }
+        at /Users/tejasdeshmukh/playwright-framework/tests/patient-full.spec.ts:599:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/patient-full-Patient-Modul-46878-Patient-form-without-saving-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/patient-full-Patient-Modul-46878-Patient-form-without-saving-chromium/error-context.md
+
+  25 failed
+    [chromium] › tests/masters-full.spec.ts:64:7 › Masters — Hospital › TC-HSP-001: Clicking Add New on Hospital opens the creation form 
+    [chromium] › tests/masters-full.spec.ts:74:7 › Masters — Hospital › TC-HSP-002: Create hospital with all mandatory fields — form submits successfully 
+    [chromium] › tests/masters-full.spec.ts:150:7 › Masters — Hospital › TC-HSP-007: Email field shows error for invalid email format 
+    [chromium] › tests/masters-full.spec.ts:180:7 › Masters — Hospital › TC-HSP-009: Submitting blank Hospital form blocks submission with errors 
+    [chromium] › tests/masters-full.spec.ts:253:7 › Masters — Hospital › TC-HSP-013: Cancel button closes Hospital form without saving 
+    [chromium] › tests/masters-full.spec.ts:368:7 › Masters — HCP › TC-HCP-001: Clicking Add New on HCP opens the creation form 
+    [chromium] › tests/masters-full.spec.ts:378:7 › Masters — HCP › TC-HCP-002: Create HCP with all mandatory fields — form submits successfully 
+    [chromium] › tests/masters-full.spec.ts:417:7 › Masters — HCP › TC-HCP-004: HCP form blocks submission when HCP Name is blank 
+    [chromium] › tests/masters-full.spec.ts:570:7 › Masters — HCP › TC-HCP-014: Submitting blank HCP form blocks submission 
+    [chromium] › tests/masters-full.spec.ts:629:7 › Masters — HCP › TC-HCP-017: Cancel button closes HCP form without saving 
+    [chromium] › tests/masters-full.spec.ts:706:7 › Masters — AF Bodies › TC-AFB-001: Clicking Add New on AF Bodies opens the creation form 
+    [chromium] › tests/masters-full.spec.ts:748:7 › Masters — AF Bodies › TC-AFB-004: AF Bodies form blocks submission when AF Body Name is blank 
+    [chromium] › tests/masters-full.spec.ts:764:7 › Masters — AF Bodies › TC-AFB-005: AF Bodies form blocks submission when Internal ID is blank 
+    [chromium] › tests/masters-full.spec.ts:817:7 › Masters — AF Bodies › TC-AFB-009: Submitting blank AF Bodies form blocks submission 
+    [chromium] › tests/masters-full.spec.ts:877:7 › Masters — AF Bodies › TC-AFB-012: Cancel button closes AF Bodies form without saving 
+    [chromium] › tests/masters-full.spec.ts:944:7 › Masters — Bumi Agents › TC-BUM-001: Clicking Add New on Bumi Agents opens the creation form 
+    [chromium] › tests/masters-full.spec.ts:954:7 › Masters — Bumi Agents › TC-BUM-002: Create Bumi Agent with all mandatory fields — form submits successfully 
+    [chromium] › tests/masters-full.spec.ts:993:7 › Masters — Bumi Agents › TC-BUM-004: Bumi Agents form blocks submission when Agent Name is blank 
+    [chromium] › tests/masters-full.spec.ts:1007:7 › Masters — Bumi Agents › TC-BUM-005: Bumi Agents form blocks submission when Internal ID is blank 
+    [chromium] › tests/masters-full.spec.ts:1071:7 › Masters — Bumi Agents › TC-BUM-008: Email field shows error for invalid email format 
+    [chromium] › tests/masters-full.spec.ts:1089:7 › Masters — Bumi Agents › TC-BUM-009: Submitting blank Bumi Agents form blocks submission 
+    [chromium] › tests/masters-full.spec.ts:1149:7 › Masters — Bumi Agents › TC-BUM-012: Cancel button closes Bumi Agents form without saving 
+    [chromium] › tests/patient-full.spec.ts:72:7 › Patient Module › TC-PAT-002: Create patient with all mandatory fields — form submits successfully 
+    [chromium] › tests/patient-full.spec.ts:125:7 › Patient Module › TC-PAT-003: Created patient appears in Patient list after submission 
+    [chromium] › tests/patient-full.spec.ts:592:7 › Patient Module › TC-PAT-028: Cancel button closes Patient form without saving 
+  91 passed (43.7m)

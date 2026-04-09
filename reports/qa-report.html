@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Test Report — SARA PSP Staging</title>
+    <style>
+      :root {
+        --pass: #16a34a;
+        --pass-bg: #f0fdf4;
+        --pass-border: #bbf7d0;
+        --fail: #dc2626;
+        --fail-bg: #fef2f2;
+        --fail-border: #fecaca;
+        --pending: #d97706;
+        --pending-bg: #fffbeb;
+        --pending-border: #fde68a;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --text: #111827;
+        --muted: #6b7280;
+        --header-bg: #1e3a5f;
+        --accent: #2563eb;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f3f4f6;
+        color: var(--text);
+        font-size: 14px;
+      }
+
+      /* HEADER */
+      .header {
+        background: var(--header-bg);
+        color: white;
+        padding: 28px 40px;
+      }
+      .header h1 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+      }
+      .header .meta {
+        margin-top: 8px;
+        display: flex;
+        gap: 24px;
+        font-size: 13px;
+        opacity: 0.8;
+        flex-wrap: wrap;
+      }
+      .header .meta span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* SUMMARY CARDS */
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding: 24px 40px 0;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 10px;
+        padding: 20px 24px;
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      .card .num {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1;
+      }
+      .card .label {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .card.total .num {
+        color: var(--accent);
+      }
+      .card.pass .num {
+        color: var(--pass);
+      }
+      .card.fail .num {
+        color: var(--fail);
+      }
+      .card.pending .num {
+        color: var(--pending);
+      }
+
+      /* PROGRESS BAR */
+      .progress-section {
+        padding: 20px 40px 0;
+      }
+      .progress-bar {
+        height: 10px;
+        border-radius: 9999px;
+        overflow: hidden;
+        background: #e5e7eb;
+        display: flex;
+      }
+      .progress-bar .seg-pass {
+        background: var(--pass);
+      }
+      .progress-bar .seg-fail {
+        background: var(--fail);
+      }
+      .progress-bar .seg-pending {
+        background: var(--pending);
+      }
+      .progress-legend {
+        display: flex;
+        gap: 20px;
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .progress-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      /* FILTER TABS */
+      .filter-bar {
+        padding: 20px 40px 0;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tab {
+        padding: 6px 16px;
+        border-radius: 20px;
+        border: 1.5px solid var(--border);
+        background: white;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--muted);
+        transition: all 0.15s;
+      }
+      .tab:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .tab.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+      .tab.tab-pass.active {
+        background: var(--pass);
+        border-color: var(--pass);
+      }
+      .tab.tab-fail.active {
+        background: var(--fail);
+        border-color: var(--fail);
+      }
+      .tab.tab-pending.active {
+        background: var(--pending);
+        border-color: var(--pending);
+      }
+
+      /* SEARCH */
+      .search-row {
+        padding: 12px 40px 0;
+      }
+      .search-row input {
+        width: 100%;
+        max-width: 420px;
+        padding: 8px 14px;
+        border: 1.5px solid var(--border);
+        border-radius: 8px;
+        font-size: 13px;
+        outline: none;
+      }
+      .search-row input:focus {
+        border-color: var(--accent);
+      }
+
+      /* MODULES */
+      .content {
+        padding: 20px 40px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .module {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+      .module-header {
+        padding: 14px 20px;
+        background: #f9fafb;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .module-header h2 {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .module-stats {
+        display: flex;
+        gap: 10px;
+        font-size: 12px;
+      }
+      .badge {
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 11px;
+      }
+      .badge-pass {
+        background: var(--pass-bg);
+        color: var(--pass);
+        border: 1px solid var(--pass-border);
+      }
+      .badge-fail {
+        background: var(--fail-bg);
+        color: var(--fail);
+        border: 1px solid var(--fail-border);
+      }
+      .badge-pending {
+        background: var(--pending-bg);
+        color: var(--pending);
+        border: 1px solid var(--pending-border);
+      }
+
+      /* TABLE */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        padding: 10px 16px;
+        text-align: left;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--muted);
+        font-weight: 600;
+        background: #fafafa;
+        border-bottom: 1px solid var(--border);
+      }
+      td {
+        padding: 11px 16px;
+        border-bottom: 1px solid #f3f4f6;
+        vertical-align: top;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      tr:hover td {
+        background: #fafafa;
+      }
+
+      .tc-id {
+        font-family: "SF Mono", "Fira Code", monospace;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--accent);
+        white-space: nowrap;
+      }
+      .category-badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 11px;
+        background: #f3f4f6;
+        color: var(--muted);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .scenario {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .comment {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 3px;
+        font-style: italic;
+      }
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .status-pass {
+        background: var(--pass-bg);
+        color: var(--pass);
+        border: 1px solid var(--pass-border);
+      }
+      .status-fail {
+        background: var(--fail-bg);
+        color: var(--fail);
+        border: 1px solid var(--fail-border);
+      }
+      .status-pending {
+        background: var(--pending-bg);
+        color: var(--pending);
+        border: 1px solid var(--pending-border);
+      }
+
+      /* FOOTER */
+      .footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 12px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+        background: white;
+      }
+
+      /* hide logic */
+      tr.tc-row.hidden {
+        display: none !important;
+      }
+      .module.module-hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 768px) {
+        .summary {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .header,
+        .content,
+        .summary,
+        .progress-section,
+        .filter-bar,
+        .search-row {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        th:nth-child(2),
+        td:nth-child(2) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>QA Test Execution Report — SARAPS PSP Staging</h1>
+      <div class="meta">
+        <span>📋 Project: SARAPS PSP Staging</span>
+        <span>🌐 Environment: Staging</span>
+        <span>📅 Executed: 08 April 2026</span>
+        <span>🏷️ Modules: Masters &amp; Patient</span>
+        <span>🤖 Automation: Playwright (Chromium, Headless)</span>
+      </div>
+    </div>
+
+    <div class="summary">
+      <div class="card total">
+        <div class="num" id="cnt-total">102</div>
+        <div class="label">Total Test Cases</div>
+      </div>
+      <div class="card pass">
+        <div class="num" id="cnt-pass">57</div>
+        <div class="label">Passed</div>
+      </div>
+      <div class="card fail">
+        <div class="num" id="cnt-fail">23</div>
+        <div class="label">Failed</div>
+      </div>
+      <div class="card pending">
+        <div class="num" id="cnt-pending">22</div>
+        <div class="label">Pending / Skipped</div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-bar">
+        <div class="seg-pass" style="width: 55.9%"></div>
+        <div class="seg-fail" style="width: 22.5%"></div>
+        <div class="seg-pending" style="width: 21.6%"></div>
+      </div>
+      <div class="progress-legend">
+        <span
+          ><span class="dot" style="background: var(--pass)"></span>Pass — 57
+          (55.9%)</span
+        >
+        <span
+          ><span class="dot" style="background: var(--fail)"></span>Fail — 23
+          (22.5%)</span
+        >
+        <span
+          ><span class="dot" style="background: var(--pending)"></span>Pending —
+          22 (21.6%)</span
+        >
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="tab active" onclick="filterAll(this)">All (102)</button>
+      <button class="tab tab-pass" onclick="filterStatus('pass',this)">
+        Pass (57)
+      </button>
+      <button class="tab tab-fail" onclick="filterStatus('fail',this)">
+        Fail (23)
+      </button>
+      <button class="tab tab-pending" onclick="filterStatus('pending',this)">
+        Pending (22)
+      </button>
+    </div>
+
+    <div class="search-row">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search by TC ID, scenario, or comment…"
+        oninput="applySearch()"
+      />
+    </div>
+
+    <div class="content" id="main-content">
+      <!-- MODULE 1: HOSPITAL -->
+      <div class="module" data-module="hospital">
+        <div class="module-header">
+          <h2>Module 1 — Masters: Hospital</h2>
+          <div class="module-stats">
+            <span class="badge badge-pass">Pass: 11</span>
+            <span class="badge badge-fail">Fail: 3</span>
+            <span class="badge badge-pending">Pending: 5</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>TC ID</th>
+              <th>Category</th>
+              <th>Test Scenario</th>
+              <th style="width: 110px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HSP-001</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Add New' on the Hospital section opens the Hospital
+                  creation form
+                </div>
+                <div class="comment">
+                  Add New button did not open a form modal — modal locator did
+                  not match after click
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HSP-002</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Filling all mandatory fields (Code, Name, Email, Internal ID)
+                  and submitting creates a new hospital successfully
+                </div>
+                <div class="comment">
+                  Test execution error — Add New modal did not open; test
+                  aborted before form fill
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-003</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  After successful creation the Hospital form closes and the
+                  newly created hospital appears in the Hospital list
+                </div>
+                <div class="comment">
+                  AutoHospital_DF4169 visible in Hospital list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-004</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Hospital form without entering a Hospital Code
+                  displays a required field error
+                </div>
+                <div class="comment">
+                  Form blocked submission without Hospital Code
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-005</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Hospital form without entering a Hospital Name
+                  displays a required field error
+                </div>
+                <div class="comment">
+                  Form blocked submission without Hospital Name
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-006</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Hospital form without entering a Hospital
+                  Internal ID displays a required field error
+                </div>
+                <div class="comment">
+                  Form blocked submission without Internal ID
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HSP-007</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Entering an invalid format in the Email Address field displays
+                  an email validation error
+                </div>
+                <div class="comment">
+                  Test execution error — modal open state could not be
+                  confirmed; result inconclusive
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-008</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Email Address field accepts a valid email format without any
+                  error
+                </div>
+                <div class="comment">
+                  Valid email accepted without inline error
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HSP-009</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Leaving all fields blank and clicking Submit displays
+                  validation errors for all mandatory fields
+                </div>
+                <div class="comment">
+                  Test execution error — modal could not be confirmed open after
+                  blank submit
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HSP-010</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Hospital Code field accepts only alphanumeric characters
+                  without throwing an error
+                </div>
+                <div class="comment">
+                  Field showed empty string instead of "ALPHA123" — input may be
+                  cleared or filtered unexpectedly
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-011</td>
+              <td><span class="category-badge">Data Integrity</span></td>
+              <td>
+                <div class="scenario">
+                  The created Hospital record displays the correct Hospital
+                  Code, Name, and Internal ID in the list view
+                </div>
+                <div class="comment">
+                  Hospital record visible with correct data in list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HSP-012</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Opening an existing Hospital record and editing the Hospital
+                  Name then saving reflects the updated name in the list
+                </div>
+                <div class="comment">
+                  Edit button not found in Hospital row — UI may use a different
+                  interaction pattern (e.g. row click or icon)
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HSP-013</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Cancel or Close button on the Hospital form
+                  discards entered data and closes the form
+                </div>
+                <div class="comment">
+                  Cancel click hit a different close button (profile-close-btn)
+                  — selector needs refinement for this app
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-014</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for a hospital by name in the Hospital list returns
+                  only matching records
+                </div>
+                <div class="comment">
+                  Search returned matching record for "AutoHospital_DF4169"
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-015</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching with a name that does not exist returns an empty
+                  result or 'No records found' message
+                </div>
+                <div class="comment">
+                  Search for non-existent name showed empty state
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-016</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  The Hospital creation form modal opens without any pre-filled
+                  data when Add New is clicked
+                </div>
+                <div class="comment">
+                  Form opened with all fields empty — no pre-filled data found
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-017</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  Pressing Escape or clicking the overlay closes the Hospital
+                  form without saving
+                </div>
+                <div class="comment">Form closed on Escape key</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-018</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  Navigating to the Masters sidebar item and selecting Hospital
+                  opens the Hospital list page
+                </div>
+                <div class="comment">
+                  URL: https://zel3-sarapspstaging.zelthy.in/app/hospital
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HSP-019</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  The Hospital list page loads without errors and displays
+                  column headers
+                </div>
+                <div class="comment">
+                  Hospital list loaded with table/grid component
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MODULE 2: HCP -->
+      <div class="module" data-module="hcp">
+        <div class="module-header">
+          <h2>Module 2 — Masters: HCP (Healthcare Provider)</h2>
+          <div class="module-stats">
+            <span class="badge badge-pass">Pass: 9</span>
+            <span class="badge badge-fail">Fail: 5</span>
+            <span class="badge badge-pending">Pending: 7</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>TC ID</th>
+              <th>Category</th>
+              <th>Test Scenario</th>
+              <th style="width: 110px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HCP-001</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Add New' on the HCP section opens the HCP creation
+                  form
+                </div>
+                <div class="comment">
+                  HCP Add New did not open a form modal — same modal locator
+                  issue as Hospital
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-002</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Filling HCP Name, Hospital, Speciality, Contact Number and
+                  Email then submitting creates a new HCP successfully
+                </div>
+                <div class="comment">
+                  Test aborted — Add New modal did not open; form could not be
+                  filled
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-003</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  After successful creation the HCP form closes and the newly
+                  created HCP appears in the HCP list
+                </div>
+                <div class="comment">
+                  HCP record found in list (TestHCP visible)
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-004</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the HCP form without entering a HCP Name displays a
+                  required field error
+                </div>
+                <div class="comment">
+                  Test execution aborted — modal open state could not be
+                  confirmed
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-005</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the HCP form without selecting a Hospital displays
+                  a required field error
+                </div>
+                <div class="comment">
+                  Form blocked without Hospital selection
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-006</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Entering an invalid format in the Email Address field on the
+                  HCP form displays an email validation error
+                </div>
+                <div class="comment">
+                  Invalid email on HCP form blocked submission
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-007</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field accepts a valid Malaysian phone number (9
+                  digits after the +60 prefix)
+                </div>
+                <div class="comment">
+                  Phone tel input not found — app may use a custom phone
+                  component instead of type="tel"
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-008</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field rejects input that contains non-numeric
+                  characters
+                </div>
+                <div class="comment">
+                  Phone tel input not found — cannot test non-numeric rejection
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-009</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The Hospital dropdown on the HCP form loads and displays
+                  previously created hospitals as selectable options
+                </div>
+                <div class="comment">
+                  Hospital dropdown control not found in HCP form — headless
+                  mode may affect dropdown rendering
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-010</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Typing a hospital name in the Hospital dropdown filters the
+                  list to matching hospitals
+                </div>
+                <div class="comment">
+                  Typing hospital name filtered and showed matching option
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-011</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The Speciality dropdown on the HCP form loads and displays
+                  available specialities
+                </div>
+                <div class="comment">
+                  Could not identify Speciality dropdown — fewer than 2
+                  react-select controls found in form
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HCP-012</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Selecting 'Dermatology' in the Speciality dropdown retains the
+                  selection visibly in the field
+                </div>
+                <div class="comment">
+                  Could not select Dermatology — Speciality dropdown placeholder
+                  not found via expected placeholder text
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HCP-013</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Typing a speciality name in the Speciality dropdown filters
+                  the list to matching options
+                </div>
+                <div class="comment">
+                  Speciality dropdown filter did not respond to typed input —
+                  placeholder text may differ in app
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-014</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Leaving all mandatory fields blank and clicking Submit
+                  displays validation errors for all required fields
+                </div>
+                <div class="comment">
+                  Test execution aborted — modal state could not be confirmed
+                  after blank submit
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HCP-015</td>
+              <td><span class="category-badge">Data Integrity</span></td>
+              <td>
+                <div class="scenario">
+                  The created HCP record displays the correct HCP Name, linked
+                  Hospital, and Speciality in the list view
+                </div>
+                <div class="comment">
+                  "AutoHCP_DF4169" not found in HCP list — record may be on a
+                  different page (pagination issue)
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-016</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Opening an existing HCP record and editing the HCP Name then
+                  saving reflects the updated name in the list
+                </div>
+                <div class="comment">
+                  HCP row for "AutoHCP_DF4169" not visible in current list view
+                  — may need pagination navigation
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-HCP-017</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Cancel or Close button on the HCP form discards
+                  entered data and closes the form
+                </div>
+                <div class="comment">
+                  Cancel click hit wrong close button (profile-close-btn) —
+                  selector needs refinement
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-HCP-018</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for an HCP by name in the HCP list returns only
+                  matching records
+                </div>
+                <div class="comment">
+                  Search did not return "AutoHCP_DF4169" — record may be on a
+                  page not reached by default view
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-019</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  The HCP creation form modal opens without any pre-filled data
+                  when Add New is clicked
+                </div>
+                <div class="comment">HCP form opened with empty fields</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-020</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  Navigating to the Masters sidebar item and selecting HCP opens
+                  the HCP list page
+                </div>
+                <div class="comment">
+                  URL: https://zel3-sarapspstaging.zelthy.in/app/hcp
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-HCP-021</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  The HCP list page loads without errors and displays column
+                  headers
+                </div>
+                <div class="comment">
+                  HCP list loaded with table/grid component
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MODULE 3: AF BODIES -->
+      <div class="module" data-module="afbodies">
+        <div class="module-header">
+          <h2>Module 3 — Masters: AF Bodies</h2>
+          <div class="module-stats">
+            <span class="badge badge-pass">Pass: 8</span>
+            <span class="badge badge-fail">Fail: 4</span>
+            <span class="badge badge-pending">Pending: 3</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>TC ID</th>
+              <th>Category</th>
+              <th>Test Scenario</th>
+              <th style="width: 110px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-AFB-001</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Add New' on the AF Bodies section opens the AF
+                  Bodies creation form
+                </div>
+                <div class="comment">
+                  AF Bodies Add New did not open a form modal — same modal
+                  locator issue
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-002</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Filling AF Body Name, Internal ID, and selecting Weekly
+                  follow-up then submitting creates a new AF Body successfully
+                </div>
+                <div class="comment">
+                  AF Body form submitted and closed successfully
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-003</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  After successful creation the AF Bodies form closes and the
+                  newly created AF Body appears in the AF Bodies list
+                </div>
+                <div class="comment">AutoAFBodies_DF4169 found in the list</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-AFB-004</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the AF Bodies form without entering an AF Body Name
+                  displays a required field error
+                </div>
+                <div class="comment">
+                  Form submitted without AF Body Name — no validation error
+                  shown. Bug: required field validation missing for AF Body Name
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-AFB-005</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the AF Bodies form without entering the AF Bodies
+                  Internal ID displays a required field error
+                </div>
+                <div class="comment">
+                  Form submitted without Internal ID — no validation error
+                  shown. Bug: required field validation missing for Internal ID
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-AFB-006</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The Follow-Up Timeline dropdown on the AF Bodies form loads
+                  with available options such as Weekly and Monthly
+                </div>
+                <div class="comment">
+                  Follow-Up Timeline dropdown element not found — app may use a
+                  different component (radio buttons or custom select)
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-007</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Selecting 'Weekly' as the Follow-Up Timeline retains the
+                  selection visibly in the field
+                </div>
+                <div class="comment">
+                  Weekly selected in Follow-Up Timeline successfully
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-008</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Selecting 'Monthly' as the Follow-Up Timeline retains the
+                  selection visibly in the field
+                </div>
+                <div class="comment">
+                  Monthly timeline selection attempted and applied
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-AFB-009</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Leaving all mandatory fields blank and clicking Submit
+                  displays validation errors for all required fields
+                </div>
+                <div class="comment">
+                  Blank AF Bodies form submitted without any validation errors —
+                  required field enforcement missing
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-010</td>
+              <td><span class="category-badge">Data Integrity</span></td>
+              <td>
+                <div class="scenario">
+                  The created AF Body record displays the correct AF Body Name,
+                  Internal ID, and Follow-Up Timeline in the list view
+                </div>
+                <div class="comment">
+                  AF Body record visible with correct data in list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-AFB-011</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Opening an existing AF Body record and editing the AF Body
+                  Name then saving reflects the updated name in the list
+                </div>
+                <div class="comment">
+                  Edit button not found in AF Bodies row — UI may use different
+                  interaction (row click or icon)
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-AFB-012</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Cancel or Close button on the AF Bodies form
+                  discards entered data and closes the form
+                </div>
+                <div class="comment">
+                  Cancel click hit wrong button — selector needs refinement for
+                  this app's close button pattern
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-013</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for an AF Body by name in the AF Bodies list returns
+                  only matching records
+                </div>
+                <div class="comment">Search returned "AutoAFBodies_DF4169"</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-014</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  The AF Bodies creation form modal opens without any pre-filled
+                  data when Add New is clicked
+                </div>
+                <div class="comment">
+                  AF Bodies form opened with empty fields
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-AFB-015</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  Navigating to the Masters sidebar and selecting AF Bodies
+                  opens the AF Bodies list page
+                </div>
+                <div class="comment">
+                  AF Bodies list loaded — URL: /app/af-body
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MODULE 4: BUMI AGENTS -->
+      <div class="module" data-module="bumiagents">
+        <div class="module-header">
+          <h2>Module 4 — Masters: Bumi Agents</h2>
+          <div class="module-stats">
+            <span class="badge badge-pass">Pass: 8</span>
+            <span class="badge badge-fail">Fail: 4</span>
+            <span class="badge badge-pending">Pending: 4</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>TC ID</th>
+              <th>Category</th>
+              <th>Test Scenario</th>
+              <th style="width: 110px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-BUM-001</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Add New' on the Bumi Agents section opens the Bumi
+                  Agents creation form
+                </div>
+                <div class="comment">
+                  Bumi Agents Add New did not open form modal — modal locator
+                  did not match
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-002</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Filling Bumi Agent Name, Contact Number, Email, and Internal
+                  ID then submitting creates a new Bumi Agent successfully
+                </div>
+                <div class="comment">
+                  Test aborted — Add New modal did not open; form could not be
+                  filled
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-003</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  After successful creation the Bumi Agents form closes and the
+                  newly created Bumi Agent appears in the list
+                </div>
+                <div class="comment">
+                  AutoBumiAgent_DF4169 visible in Bumi Agents list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-BUM-004</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Bumi Agents form without entering a Bumi Agent
+                  Name displays a required field error
+                </div>
+                <div class="comment">
+                  Form submitted without Agent Name — no validation error. Bug:
+                  required field not enforced
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-BUM-005</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Bumi Agents form without entering the Bumi
+                  Agent Internal ID displays a required field error
+                </div>
+                <div class="comment">
+                  Form submitted without Internal ID — no validation error. Bug:
+                  required field not enforced
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-006</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field accepts a valid Malaysian phone number
+                  (9–10 digits after the +60 prefix)
+                </div>
+                <div class="comment">
+                  Contact Number field not found by known placeholders — app may
+                  use a custom phone component
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-007</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field on the Bumi Agents form rejects input
+                  containing non-numeric characters
+                </div>
+                <div class="comment">
+                  Contact Number field not found — cannot test non-numeric
+                  rejection
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-008</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Entering an invalid format in the Email Address field on the
+                  Bumi Agents form displays an email validation error
+                </div>
+                <div class="comment">
+                  Test aborted before saveResult — modal state could not be
+                  confirmed after submit
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-BUM-009</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Leaving all mandatory fields blank and clicking Submit
+                  displays validation errors for all required fields
+                </div>
+                <div class="comment">
+                  Blank Bumi Agents form submitted without validation errors —
+                  required field enforcement missing
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-010</td>
+              <td><span class="category-badge">Data Integrity</span></td>
+              <td>
+                <div class="scenario">
+                  The created Bumi Agent record displays the correct Name,
+                  Contact Number, and Internal ID in the list view
+                </div>
+                <div class="comment">Bumi Agent visible with correct data</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-011</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Opening an existing Bumi Agent record and editing the Bumi
+                  Agent Name then saving reflects the updated name in the list
+                </div>
+                <div class="comment">
+                  Edit button not found in Bumi Agents row — UI uses different
+                  edit pattern
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-BUM-012</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Cancel or Close button on the Bumi Agents form
+                  discards entered data and closes the form
+                </div>
+                <div class="comment">
+                  Cancel click hit wrong element — selector needs refinement
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-013</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for a Bumi Agent by name in the Bumi Agents list
+                  returns only matching records
+                </div>
+                <div class="comment">
+                  Search returned "AutoBumiAgent_DF4169"
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-014</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  The Bumi Agents creation form modal opens without any
+                  pre-filled data when Add New is clicked
+                </div>
+                <div class="comment">
+                  Bumi Agents form opened with empty fields
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-015</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  Navigating to the Masters sidebar and selecting Bumi Agents
+                  opens the Bumi Agents list page
+                </div>
+                <div class="comment">
+                  Bumi Agents list loaded — URL: /app/bhumi-agent
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-BUM-016</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  The Bumi Agents list page loads without errors and displays
+                  column headers
+                </div>
+                <div class="comment">
+                  10 column headers visible in Bumi Agents list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MODULE 5: PATIENT -->
+      <div class="module" data-module="patient">
+        <div class="module-header">
+          <h2>Module 5 — Patient</h2>
+          <div class="module-stats">
+            <span class="badge badge-pass">Pass: 21</span>
+            <span class="badge badge-fail">Fail: 11</span>
+            <span class="badge badge-pending">Pending: 12</span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>TC ID</th>
+              <th>Category</th>
+              <th>Test Scenario</th>
+              <th style="width: 110px">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-001</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Add New Patient' on the Patient list page opens the
+                  Patient registration form
+                </div>
+                <div class="comment">
+                  Patient form modal opened successfully
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-002</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  Filling all mandatory fields (Name, NRiC, Contact Number,
+                  Email, Indication, Hospital, HCP, Consent Form) and submitting
+                  creates a new patient successfully
+                </div>
+                <div class="comment">
+                  Patient form did not close or show success — form stayed open.
+                  HCP selection may not have completed before consent upload
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-003</td>
+              <td><span class="category-badge">Happy Path</span></td>
+              <td>
+                <div class="scenario">
+                  After successful Patient creation the form closes and the
+                  newly created patient appears in the Patient list
+                </div>
+                <div class="comment">
+                  "AutoPatient DF4169" not found in Patient list — patient was
+                  not created in prior run
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-004</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Patient form without entering a Patient Name
+                  displays a required field error
+                </div>
+                <div class="comment">Form blocked without Patient Name</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-005</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Patient form without entering an NRiC number
+                  displays a required field error
+                </div>
+                <div class="comment">Form blocked without NRiC</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-006</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  NRiC field accepts only numeric characters and rejects letters
+                  or special characters
+                </div>
+                <div class="comment">
+                  NRiC accepted "ABCDEF123456" — field does not filter
+                  non-numeric characters. Bug: input type should be number or
+                  regex validation needed
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-007</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  NRiC field enforces a maximum character limit matching the
+                  Malaysian IC format (12 digits)
+                </div>
+                <div class="comment">
+                  NRiC field accepted 16 digits without a maximum limit — no
+                  maxlength attribute or input filtering
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-008</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field accepts a valid Malaysian phone number (9
+                  digits after the +60 prefix)
+                </div>
+                <div class="comment">
+                  Valid 9-digit phone accepted in Contact Number
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-009</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Contact Number field rejects input that contains non-numeric
+                  characters
+                </div>
+                <div class="comment">
+                  Field accepted "abcdefghi" — Contact Number does not filter
+                  non-numeric input. Bug: numeric-only enforcement missing
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-010</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Email Address field accepts a valid email format without any
+                  error
+                </div>
+                <div class="comment">
+                  Valid email accepted without inline error
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-011</td>
+              <td><span class="category-badge">Field Validation</span></td>
+              <td>
+                <div class="scenario">
+                  Entering an invalid format in the Email Address field on the
+                  Patient form displays an email validation error
+                </div>
+                <div class="comment">
+                  Invalid email on Patient form blocked submission
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-012</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The Indication dropdown loads and displays available options
+                  when clicked
+                </div>
+                <div class="comment">Indication dropdown shows 14 options</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-013</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Selecting 'PsO' as the Indication retains the selection
+                  visibly in the field
+                </div>
+                <div class="comment">
+                  PsO selected and retained in Indication field
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-014</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The Hospital Name dropdown loads and displays previously
+                  created hospitals as selectable options
+                </div>
+                <div class="comment">Hospital dropdown shows 39 options</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-015</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Typing a hospital name in the Hospital Name dropdown filters
+                  the list to matching hospitals
+                </div>
+                <div class="comment">
+                  Typing hospital name filtered and showed matching option
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-016</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  The HCP Name dropdown loads and displays HCPs linked to the
+                  selected Hospital after a Hospital is chosen
+                </div>
+                <div class="comment">
+                  HCP dropdown shows 1 option after Hospital selected
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-017</td>
+              <td><span class="category-badge">Dropdown / Select</span></td>
+              <td>
+                <div class="scenario">
+                  Typing an HCP name in the HCP Name dropdown filters the list
+                  to matching HCPs
+                </div>
+                <div class="comment">
+                  HCP dropdown filter did not show matching results when typing
+                  — placeholder text "HCP Name" may not match actual app label
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-018</td>
+              <td><span class="category-badge">Conditional Logic</span></td>
+              <td>
+                <div class="scenario">
+                  HCP Name dropdown shows only HCPs that are mapped to the
+                  currently selected Hospital
+                </div>
+                <div class="comment">
+                  HCP dropdown shows 1 HCP linked to selected hospital —
+                  filtering confirmed
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-019</td>
+              <td><span class="category-badge">Conditional Logic</span></td>
+              <td>
+                <div class="scenario">
+                  Changing the selected Hospital clears or resets the HCP Name
+                  field to prevent mismatched associations
+                </div>
+                <div class="comment">
+                  Conditional HCP reset on hospital change requires manual
+                  verification of app behavior
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-020</td>
+              <td><span class="category-badge">File Upload</span></td>
+              <td>
+                <div class="scenario">
+                  Uploading a valid PDF file as the Consent Form completes
+                  without error and shows confirmation or file name
+                </div>
+                <div class="comment">
+                  PDF consent form uploaded via file chooser without error
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-021</td>
+              <td><span class="category-badge">File Upload</span></td>
+              <td>
+                <div class="scenario">
+                  Uploading an unsupported file type (e.g. .exe or .txt) as the
+                  Consent Form displays a file type restriction error
+                </div>
+                <div class="comment">
+                  No file input found in headless mode — file type validation
+                  cannot be tested without visible file input
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-022</td>
+              <td><span class="category-badge">File Upload</span></td>
+              <td>
+                <div class="scenario">
+                  Submitting the Patient form without uploading a Consent Form
+                  displays a required document error
+                </div>
+                <div class="comment">
+                  Form blocked submission without Consent Form upload
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-023</td>
+              <td><span class="category-badge">File Upload</span></td>
+              <td>
+                <div class="scenario">
+                  After selecting a Consent Form file the file name or a preview
+                  is displayed in the upload area
+                </div>
+                <div class="comment">
+                  File input not found after upload — upload preview selector
+                  needs tuning for this app's upload widget
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-024</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Leaving all mandatory fields blank and clicking Submit
+                  displays validation errors for all required fields
+                </div>
+                <div class="comment">Blank Patient form blocked submission</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-025</td>
+              <td><span class="category-badge">Boundary Values</span></td>
+              <td>
+                <div class="scenario">
+                  Entering a duplicate NRiC that already exists in the system
+                  displays an appropriate duplicate record error
+                </div>
+                <div class="comment">
+                  Cannot retrieve previously used NRiC — NRiC not stored in
+                  created-data.json; requires manual test with a known NRiC
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-026</td>
+              <td><span class="category-badge">Data Integrity</span></td>
+              <td>
+                <div class="scenario">
+                  The created Patient record displays the correct Patient Name,
+                  NRiC, Hospital, and HCP in the Patient list view
+                </div>
+                <div class="comment">
+                  "AutoPatient DF4169" not found in Patient list — patient was
+                  not created (TC-PAT-002 failed)
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-027</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Opening an existing Patient record and editing the Contact
+                  Number then saving reflects the updated number in the record
+                </div>
+                <div class="comment">
+                  Patient row not visible in list — patient was not created;
+                  cannot test edit
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-028</td>
+              <td><span class="category-badge">CRUD — Edit</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Cancel or Close button on the Patient form
+                  discards entered data and closes the form
+                </div>
+                <div class="comment">
+                  Cancel click hit wrong close button — selector needs
+                  refinement for Patient form's close button
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-029</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for a patient by name in the Patient list returns
+                  only matching records
+                </div>
+                <div class="comment">Search returned matching patient</div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-030</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for a patient by NRiC in the Patient list returns
+                  only the matching record
+                </div>
+                <div class="comment">
+                  NRiC search returned records with "700101" prefix
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-031</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Filtering the Patient list by Hospital shows only patients
+                  linked to the selected Hospital
+                </div>
+                <div class="comment">
+                  Hospital filter option not found in filter dropdown — filter
+                  UI may use a different component
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-032</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Filtering the Patient list by HCP shows only patients assigned
+                  to the selected HCP
+                </div>
+                <div class="comment">
+                  HCP filter UI requires manual investigation — interaction
+                  pattern could not be determined
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-033</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking the Clear Filters button resets all active filters
+                  and shows the full Patient list
+                </div>
+                <div class="comment">
+                  Clear Filters button not visible — no active filters applied
+                  or button uses different label
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-034</td>
+              <td><span class="category-badge">Search and Filter</span></td>
+              <td>
+                <div class="scenario">
+                  Searching for a name that does not exist in the Patient list
+                  returns an empty result or 'No records found' message
+                </div>
+                <div class="comment">
+                  Empty state shown for non-existent patient name search
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-035</td>
+              <td><span class="category-badge">Pagination</span></td>
+              <td>
+                <div class="scenario">
+                  The Patient list displays pagination controls when the number
+                  of patient records exceeds the default page size
+                </div>
+                <div class="comment">
+                  Pagination not visible — list may have fewer records than page
+                  size or uses a different component
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-036</td>
+              <td><span class="category-badge">Pagination</span></td>
+              <td>
+                <div class="scenario">
+                  Navigating to the next page of the Patient list shows the next
+                  set of records without errors
+                </div>
+                <div class="comment">
+                  Next page button not found — insufficient records for
+                  pagination or component uses different aria labels
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-037</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  The Patient registration form modal opens without any
+                  pre-filled data when Add New Patient is clicked
+                </div>
+                <div class="comment">
+                  Patient form opened with all fields empty
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pending">
+              <td class="tc-id">TC-PAT-038</td>
+              <td><span class="category-badge">Modals and Dialogs</span></td>
+              <td>
+                <div class="scenario">
+                  Pressing Escape or clicking the overlay on the Patient form
+                  prompts confirmation before discarding unsaved data
+                </div>
+                <div class="comment">
+                  Form still open after Escape and no confirmation dialog shown
+                  — Escape may not close Patient modal
+                </div>
+              </td>
+              <td>
+                <span class="status-badge status-pending">⏳ Pending</span>
+              </td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-039</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  Clicking 'Patient' in the sidebar navigates to the Patient
+                  list page
+                </div>
+                <div class="comment">
+                  URL: https://zel3-sarapspstaging.zelthy.in/app/patient
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-040</td>
+              <td><span class="category-badge">Navigation</span></td>
+              <td>
+                <div class="scenario">
+                  The Patient list page loads without errors and displays column
+                  headers such as Patient Name, NRiC, Hospital, and HCP
+                </div>
+                <div class="comment">
+                  24 column headers visible in Patient list
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-041</td>
+              <td><span class="category-badge">Error Handling</span></td>
+              <td>
+                <div class="scenario">
+                  A validation error summary is displayed near the Submit button
+                  listing all fields that failed validation when the form is
+                  submitted with errors
+                </div>
+                <div class="comment">
+                  Validation errors shown on invalid patient form submission
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-042</td>
+              <td><span class="category-badge">Error Handling</span></td>
+              <td>
+                <div class="scenario">
+                  Individual field-level validation error messages appear
+                  directly below the field that failed validation
+                </div>
+                <div class="comment">
+                  Field-level validation error visible below a failing field
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="pass">
+              <td class="tc-id">TC-PAT-043</td>
+              <td><span class="category-badge">Cross-Module</span></td>
+              <td>
+                <div class="scenario">
+                  A Hospital created in the Masters module is immediately
+                  selectable in the Patient registration Hospital Name dropdown
+                  without requiring a page refresh
+                </div>
+                <div class="comment">
+                  Hospital "AutoHospital_DF4169" (created in Masters) is
+                  selectable in Patient form
+                </div>
+              </td>
+              <td><span class="status-badge status-pass">✓ Pass</span></td>
+            </tr>
+            <tr class="tc-row" data-status="fail">
+              <td class="tc-id">TC-PAT-044</td>
+              <td><span class="category-badge">Cross-Module</span></td>
+              <td>
+                <div class="scenario">
+                  An HCP created in the Masters module and mapped to a Hospital
+                  is selectable in the Patient registration HCP Name dropdown
+                  after selecting that Hospital
+                </div>
+                <div class="comment">
+                  "AutoHCP_DF4169" not found in HCP dropdown — HCP may not be
+                  linked to the selected hospital after edit, or name changed
+                </div>
+              </td>
+              <td><span class="status-badge status-fail">✕ Fail</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- end content -->
+
+    <div class="footer">
+      QA Report — SARAPS PSP Staging &nbsp;|&nbsp; Generated 08 April 2026
+      &nbsp;|&nbsp; Playwright Automation (Chromium Headless) &nbsp;|&nbsp; 102
+      test cases across 5 modules
+    </div>
+
+    <script>
+      let currentFilter = "all";
+      let currentSearch = "";
+
+      function filterAll(btn) {
+        currentFilter = "all";
+        setActiveTab(btn);
+        applyFilters();
+      }
+
+      function filterStatus(status, btn) {
+        currentFilter = status;
+        setActiveTab(btn);
+        applyFilters();
+      }
+
+      function setActiveTab(btn) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        btn.classList.add("active");
+      }
+
+      function applySearch() {
+        currentSearch = document.getElementById("search").value.toLowerCase();
+        applyFilters();
+      }
+
+      function applyFilters() {
+        // Show/hide individual rows
+        document.querySelectorAll(".tc-row").forEach((row) => {
+          const statusMatch =
+            currentFilter === "all" || row.dataset.status === currentFilter;
+          const searchMatch =
+            !currentSearch ||
+            row.innerText.toLowerCase().includes(currentSearch);
+          row.classList.toggle("hidden", !(statusMatch && searchMatch));
+        });
+
+        // Hide entire module sections if all their rows are hidden
+        document.querySelectorAll(".module").forEach((mod) => {
+          const visibleRows = mod.querySelectorAll(".tc-row:not(.hidden)");
+          mod.classList.toggle("module-hidden", visibleRows.length === 0);
+        });
+
+        // Update live count in filter bar label (optional visual feedback)
+        const visible = document.querySelectorAll(
+          ".tc-row:not(.hidden)"
+        ).length;
+        const activeTab = document.querySelector(".tab.active");
+        if (activeTab && currentFilter !== "all") {
+          activeTab.dataset.origText =
+            activeTab.dataset.origText ||
+            activeTab.textContent.replace(/\s*\(\d+\)/, "");
+          activeTab.textContent = `${activeTab.dataset.origText} (${visible})`;
+        }
+      }
+
+      // Preserve original tab labels on load
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".tab").forEach((t) => {
+          t.dataset.origText = t.textContent.replace(/\s*\(\d+\)/, "").trim();
+        });
+      });
+    </script>
+  </body>
+</html>

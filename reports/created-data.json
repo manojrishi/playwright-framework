@@ -1,0 +1,34 @@
+{
+  "hospital": {
+    "type": "Hospital",
+    "name": "AutoHospital_DF4169",
+    "phone": "+60355660071",
+    "createdAt": "2026-04-07T13:17:39.006Z"
+  },
+  "hcp": {
+    "type": "HCP",
+    "name": "AutoHCP_DF4169",
+    "phone": "+60373744878",
+    "createdAt": "2026-04-07T13:18:01.247Z"
+  },
+  "afBodies": {
+    "type": "AF Bodies",
+    "name": "AutoAFBodies_DF4169",
+    "createdAt": "2026-04-07T13:18:46.258Z"
+  },
+  "bumiAgent": {
+    "type": "Bumi Agent",
+    "name": "AutoBumiAgent_DF4169",
+    "phone": "+60358214483",
+    "createdAt": "2026-04-07T13:19:01.865Z"
+  },
+  "patient": {
+    "type": "Patient",
+    "name": "AutoPatient DF4169",
+    "phone": "+60393111700",
+    "email": "autopatient_df4169@test.com",
+    "hospitalName": "AutoHospital_DF4169",
+    "hcpName": "AutoHCP_DF4169",
+    "createdAt": "2026-04-07T13:19:28.063Z"
+  }
+}

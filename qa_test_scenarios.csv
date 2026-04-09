@@ -1,0 +1,131 @@
+Project Name,SARAPS PSP Staging
+Module Name,Masters and Patient
+Test Scenario Created By,QA Team
+Test Scenario Created Date,07 April 2026
+
+Category,Page Pointer,Test Scenario ID,Test Scenario,Status,Comments
+
+,MODULE 1: MASTERS — HOSPITAL,,,
+Happy Path,Hospital Master List,TC-HSP-001,"Clicking 'Add New' on the Hospital section opens the Hospital creation form",fail,"Add New button did not open a form modal"
+Happy Path,Hospital Creation Form,TC-HSP-002,"Filling Hospital Code, Hospital Name, Email Address, and Hospital Internal ID and clicking Submit creates a new hospital record successfully",pending,
+Happy Path,Hospital Master List,TC-HSP-003,"After successful creation the Hospital form closes and the newly created hospital appears in the Hospital list",pass,
+Field Validation,Hospital Creation Form,TC-HSP-004,"Submitting the Hospital form without entering a Hospital Code displays a required field error",pass,"Form blocked submission without Hospital Code"
+Field Validation,Hospital Creation Form,TC-HSP-005,"Submitting the Hospital form without entering a Hospital Name displays a required field error",pass,"Form blocked submission without Hospital Name"
+Field Validation,Hospital Creation Form,TC-HSP-006,"Submitting the Hospital form without entering a Hospital Internal ID displays a required field error",pass,"Form blocked submission without Internal ID"
+Field Validation,Hospital Creation Form,TC-HSP-007,"Entering an invalid format in the Email Address field displays an email validation error",pending,
+Field Validation,Hospital Creation Form,TC-HSP-008,"Email Address field accepts a valid email format without any error",pass,"Valid email accepted without inline error"
+Boundary Values,Hospital Creation Form,TC-HSP-009,"Leaving all fields blank and clicking Submit displays validation errors for all mandatory fields",pending,
+Boundary Values,Hospital Creation Form,TC-HSP-010,"Hospital Code field accepts only alphanumeric characters without throwing an error",fail,"Field showed """" instead of ""ALPHA123"""
+Data Integrity,Hospital Master List,TC-HSP-011,"The created Hospital record displays the correct Hospital Code, Name, and Internal ID in the list view",pass,"Hospital record visible with correct data"
+CRUD — Edit,Hospital Master List,TC-HSP-012,"Opening an existing Hospital record and editing the Hospital Name then saving reflects the updated name in the list",pending,"Edit button not found in Hospital row — UI may use different interaction pattern"
+CRUD — Edit,Hospital Creation Form,TC-HSP-013,"Clicking the Cancel or Close button on the Hospital form without saving discards all entered data and closes the form",pending,
+Search and Filter,Hospital Master List,TC-HSP-014,"Searching for a hospital by name in the Hospital list returns only matching records",pass,"Search returned matching record for ""AutoHospital_DF4169"""
+Search and Filter,Hospital Master List,TC-HSP-015,"Searching with a name that does not exist returns an empty result or 'No records found' message",pass,"Search for non-existent name showed empty state"
+Modals and Dialogs,Hospital Creation Form,TC-HSP-016,"The Hospital creation form modal opens without any pre-filled data when Add New is clicked",pass,"Form opened with all fields empty"
+Modals and Dialogs,Hospital Creation Form,TC-HSP-017,"Pressing Escape or clicking the overlay closes the Hospital form without saving",pass,"Form closed on Escape key"
+Navigation,Hospital Master List,TC-HSP-018,"Navigating to the Masters sidebar item and selecting Hospital opens the Hospital list page",pass,"URL: https://zel3-sarapspstaging.zelthy.in/app/hospital"
+Navigation,Hospital Master List,TC-HSP-019,"The Hospital list page loads without errors and displays column headers",pass,"Hospital list loaded with table/grid"
+
+,MODULE 2: MASTERS — HCP (Healthcare Provider),,,
+Happy Path,HCP Master List,TC-HCP-001,"Clicking 'Add New' on the HCP section opens the HCP creation form",fail,"HCP Add New did not open a form modal"
+Happy Path,HCP Creation Form,TC-HCP-002,"Filling HCP Name, selecting a Hospital from the dropdown, selecting a Speciality, entering Contact Number and Email Address then clicking Submit creates a new HCP record successfully",pending,
+Happy Path,HCP Master List,TC-HCP-003,"After successful creation the HCP form closes and the newly created HCP appears in the HCP list",pass,
+Field Validation,HCP Creation Form,TC-HCP-004,"Submitting the HCP form without entering a HCP Name displays a required field error",pending,
+Field Validation,HCP Creation Form,TC-HCP-005,"Submitting the HCP form without selecting a Hospital displays a required field error",pass,"Form blocked without Hospital selection"
+Field Validation,HCP Creation Form,TC-HCP-006,"Entering an invalid format in the Email Address field on the HCP form displays an email validation error",pass,"Invalid email on HCP form blocked submission"
+Field Validation,HCP Creation Form,TC-HCP-007,"Contact Number field accepts a valid Malaysian phone number (9 digits after the +60 prefix)",pending,"Phone tel input not found — cannot verify numeric acceptance"
+Field Validation,HCP Creation Form,TC-HCP-008,"Contact Number field rejects input that contains non-numeric characters",pending,"Phone tel input not found — cannot test non-numeric rejection"
+Dropdown / Select,HCP Creation Form,TC-HCP-009,"The Hospital dropdown on the HCP form loads and displays previously created hospitals as selectable options",pending,"Hospital dropdown control not found in HCP form"
+Dropdown / Select,HCP Creation Form,TC-HCP-010,"Typing a hospital name in the Hospital dropdown filters the list to matching hospitals",pass,"Typing hospital name filtered and showed matching option"
+Dropdown / Select,HCP Creation Form,TC-HCP-011,"The Speciality dropdown on the HCP form loads and displays available specialities",pending,"Could not identify Speciality dropdown — fewer than 2 dropdowns in form"
+Dropdown / Select,HCP Creation Form,TC-HCP-012,"Selecting 'Dermatology' in the Speciality dropdown retains the selection visibly in the field",fail,"Could not select Dermatology from Speciality dropdown"
+Dropdown / Select,HCP Creation Form,TC-HCP-013,"Typing a speciality name in the Speciality dropdown filters the list to matching options",fail,"Speciality dropdown filter did not respond to typed input"
+Boundary Values,HCP Creation Form,TC-HCP-014,"Leaving all mandatory fields blank and clicking Submit displays validation errors for all required fields",pending,
+Data Integrity,HCP Master List,TC-HCP-015,"The created HCP record displays the correct HCP Name, linked Hospital, and Speciality in the list view",fail,"""AutoHCP_DF4169"" not found in HCP list — may be on different page"
+CRUD — Edit,HCP Master List,TC-HCP-016,"Opening an existing HCP record and editing the HCP Name then saving reflects the updated name in the list",pending,"HCP row for ""AutoHCP_DF4169"" not visible in current list view"
+CRUD — Edit,HCP Creation Form,TC-HCP-017,"Clicking the Cancel or Close button on the HCP form without saving discards all entered data and closes the form",pending,
+Search and Filter,HCP Master List,TC-HCP-018,"Searching for an HCP by name in the HCP list returns only matching records",fail,"Search did not return ""AutoHCP_DF4169"""
+Modals and Dialogs,HCP Creation Form,TC-HCP-019,"The HCP creation form modal opens without any pre-filled data when Add New is clicked",pass,"HCP form opened with empty fields"
+Navigation,HCP Master List,TC-HCP-020,"Navigating to the Masters sidebar item and selecting HCP opens the HCP list page",pass,"URL: https://zel3-sarapspstaging.zelthy.in/app/hcp"
+Navigation,HCP Master List,TC-HCP-021,"The HCP list page loads without errors and displays column headers",pass,"HCP list loaded with table/grid"
+
+,MODULE 3: MASTERS — AF BODIES,,,
+Happy Path,AF Bodies Master List,TC-AFB-001,"Clicking 'Add New' on the AF Bodies section opens the AF Bodies creation form",fail,"AF Bodies Add New did not open a form modal"
+Happy Path,AF Bodies Creation Form,TC-AFB-002,"Filling AF Body Name, AF Bodies Internal ID, and selecting 'Weekly' as the Follow-Up Timeline then clicking Submit creates a new AF Body record successfully",pass,
+Happy Path,AF Bodies Master List,TC-AFB-003,"After successful creation the AF Bodies form closes and the newly created AF Body appears in the AF Bodies list",pass,
+Field Validation,AF Bodies Creation Form,TC-AFB-004,"Submitting the AF Bodies form without entering an AF Body Name displays a required field error",fail,"Form submitted without AF Body Name — no error"
+Field Validation,AF Bodies Creation Form,TC-AFB-005,"Submitting the AF Bodies form without entering the AF Bodies Internal ID displays a required field error",fail,"Form submitted without Internal ID — no error"
+Dropdown / Select,AF Bodies Creation Form,TC-AFB-006,"The Follow-Up Timeline dropdown on the AF Bodies form loads with available options such as Weekly and Monthly",pending,"Follow-Up Timeline dropdown element not found — UI may use different component"
+Dropdown / Select,AF Bodies Creation Form,TC-AFB-007,"Selecting 'Weekly' as the Follow-Up Timeline retains the selection visibly in the field after selection",pass,"Weekly selected in Follow-Up Timeline"
+Dropdown / Select,AF Bodies Creation Form,TC-AFB-008,"Selecting 'Monthly' as the Follow-Up Timeline retains the selection visibly in the field after selection",pass,"Monthly timeline selection attempted"
+Boundary Values,AF Bodies Creation Form,TC-AFB-009,"Leaving all mandatory fields blank and clicking Submit displays validation errors for all required fields",fail,"Blank form submitted without validation"
+Data Integrity,AF Bodies Master List,TC-AFB-010,"The created AF Body record displays the correct AF Body Name, Internal ID, and Follow-Up Timeline in the list view",pass,"AF Body record visible with correct data"
+CRUD — Edit,AF Bodies Master List,TC-AFB-011,"Opening an existing AF Body record and editing the AF Body Name then saving reflects the updated name in the list",pending,"Edit button not found in AF Bodies row"
+CRUD — Edit,AF Bodies Creation Form,TC-AFB-012,"Clicking the Cancel or Close button on the AF Bodies form without saving discards all entered data and closes the form",pending,
+Search and Filter,AF Bodies Master List,TC-AFB-013,"Searching for an AF Body by name in the AF Bodies list returns only matching records",pass,"Search returned ""AutoAFBodies_DF4169"""
+Modals and Dialogs,AF Bodies Creation Form,TC-AFB-014,"The AF Bodies creation form modal opens without any pre-filled data when Add New is clicked",pass,"AF Bodies form opened with empty fields"
+Navigation,AF Bodies Master List,TC-AFB-015,"Navigating to the Masters sidebar item and selecting AF Bodies opens the AF Bodies list page",pass,"AF Bodies list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/af-body"
+
+,MODULE 4: MASTERS — BUMI AGENTS,,,
+Happy Path,Bumi Agents Master List,TC-BUM-001,"Clicking 'Add New' on the Bumi Agents section opens the Bumi Agents creation form",fail,"Bumi Agents Add New did not open form modal"
+Happy Path,Bumi Agents Creation Form,TC-BUM-002,"Filling Bumi Agent Name, Contact Number, Email Address, and Bumi Agent Internal ID then clicking Submit creates a new Bumi Agent record successfully",pending,
+Happy Path,Bumi Agents Master List,TC-BUM-003,"After successful creation the Bumi Agents form closes and the newly created Bumi Agent appears in the Bumi Agents list",pass,
+Field Validation,Bumi Agents Creation Form,TC-BUM-004,"Submitting the Bumi Agents form without entering a Bumi Agent Name displays a required field error",fail,"Form submitted without Agent Name — no error"
+Field Validation,Bumi Agents Creation Form,TC-BUM-005,"Submitting the Bumi Agents form without entering the Bumi Agent Internal ID displays a required field error",fail,"Form submitted without Internal ID — no error"
+Field Validation,Bumi Agents Creation Form,TC-BUM-006,"Contact Number field on the Bumi Agents form accepts a valid Malaysian phone number (9–10 digits after the +60 prefix)",pending,"Contact Number field not found by known placeholders"
+Field Validation,Bumi Agents Creation Form,TC-BUM-007,"Contact Number field on the Bumi Agents form rejects input containing non-numeric characters",pending,"Contact Number field not found — cannot test non-numeric rejection"
+Field Validation,Bumi Agents Creation Form,TC-BUM-008,"Entering an invalid format in the Email Address field on the Bumi Agents form displays an email validation error",pending,
+Boundary Values,Bumi Agents Creation Form,TC-BUM-009,"Leaving all mandatory fields blank and clicking Submit displays validation errors for all required fields",fail,"Blank form submitted without validation"
+Data Integrity,Bumi Agents Master List,TC-BUM-010,"The created Bumi Agent record displays the correct Name, Contact Number, and Internal ID in the list view",pass,"Bumi Agent visible with correct data"
+CRUD — Edit,Bumi Agents Master List,TC-BUM-011,"Opening an existing Bumi Agent record and editing the Bumi Agent Name then saving reflects the updated name in the list",pending,"Edit button not found in Bumi Agents row"
+CRUD — Edit,Bumi Agents Creation Form,TC-BUM-012,"Clicking the Cancel or Close button on the Bumi Agents form without saving discards all entered data and closes the form",pending,
+Search and Filter,Bumi Agents Master List,TC-BUM-013,"Searching for a Bumi Agent by name in the Bumi Agents list returns only matching records",pass,"Search returned ""AutoBumiAgent_DF4169"""
+Modals and Dialogs,Bumi Agents Creation Form,TC-BUM-014,"The Bumi Agents creation form modal opens without any pre-filled data when Add New is clicked",pass,"Bumi Agents form opened with empty fields"
+Navigation,Bumi Agents Master List,TC-BUM-015,"Navigating to the Masters sidebar item and selecting Bumi Agents opens the Bumi Agents list page",pass,"Bumi Agents list loaded — URL: https://zel3-sarapspstaging.zelthy.in/app/bhumi-agent"
+Navigation,Bumi Agents Master List,TC-BUM-016,"The Bumi Agents list page loads without errors and displays column headers",pass,"10 column headers visible in Bumi Agents list"
+
+,MODULE 5: PATIENT,,,
+Happy Path,Patient List,TC-PAT-001,"Clicking 'Add New Patient' on the Patient list page opens the Patient registration form",pass,
+Happy Path,Patient Registration Form,TC-PAT-002,"Filling Patient Name, NRiC, Contact Number, Email Address, selecting Indication, Hospital Name, and HCP Name, uploading a Consent Form PDF, then clicking Submit creates a new Patient record successfully",fail,"Patient form did not close or show success after all mandatory fields — check screenshot"
+Happy Path,Patient List,TC-PAT-003,"After successful Patient creation the form closes and the newly created patient appears in the Patient list",fail,"Patient ""AutoPatient DF4169"" not found in list"
+Field Validation,Patient Registration Form,TC-PAT-004,"Submitting the Patient form without entering a Patient Name displays a required field error",pass,"Form blocked without Patient Name"
+Field Validation,Patient Registration Form,TC-PAT-005,"Submitting the Patient form without entering an NRiC number displays a required field error",pass,"Form blocked without NRiC"
+Field Validation,Patient Registration Form,TC-PAT-006,"NRiC field accepts only numeric characters and rejects letters or special characters",fail,"NRiC accepted ""ABCDEF123456"" — value: ""ABCDEF123456"""
+Field Validation,Patient Registration Form,TC-PAT-007,"NRiC field enforces a maximum character limit matching the Malaysian IC format (12 digits)",fail,"NRiC field accepted 16 digits without a maximum limit"
+Field Validation,Patient Registration Form,TC-PAT-008,"Contact Number field accepts a valid Malaysian phone number (9 digits after the +60 prefix)",pass,"Valid 9-digit phone accepted in Contact Number"
+Field Validation,Patient Registration Form,TC-PAT-009,"Contact Number field rejects input that contains non-numeric characters",fail,"Field accepted ""abcdefghi"" — value: ""abcdefghi"""
+Field Validation,Patient Registration Form,TC-PAT-010,"Email Address field accepts a valid email format without any error",pass,"Valid email accepted without inline error"
+Field Validation,Patient Registration Form,TC-PAT-011,"Entering an invalid format in the Email Address field on the Patient form displays an email validation error",pass,"Invalid email on Patient form blocked submission"
+Dropdown / Select,Patient Registration Form,TC-PAT-012,"The Indication dropdown loads and displays available options when clicked",pass,"Indication dropdown shows 14 option(s)"
+Dropdown / Select,Patient Registration Form,TC-PAT-013,"Selecting 'PsO' as the Indication retains the selection visibly in the field",pass,"PsO selected and retained in Indication field"
+Dropdown / Select,Patient Registration Form,TC-PAT-014,"The Hospital Name dropdown loads and displays previously created hospitals as selectable options",pass,"Hospital dropdown shows 39 option(s)"
+Dropdown / Select,Patient Registration Form,TC-PAT-015,"Typing a hospital name in the Hospital Name dropdown filters the list to matching hospitals",pass,"Typing hospital name filtered and showed matching option"
+Dropdown / Select,Patient Registration Form,TC-PAT-016,"The HCP Name dropdown loads and displays HCPs linked to the selected Hospital after a Hospital is chosen",pass,"HCP dropdown shows 1 option(s) after Hospital selected"
+Dropdown / Select,Patient Registration Form,TC-PAT-017,"Typing an HCP name in the HCP Name dropdown filters the list to matching HCPs",fail,"HCP dropdown filter did not show matching results"
+Conditional Logic,Patient Registration Form,TC-PAT-018,"HCP Name dropdown shows only HCPs that are mapped to the currently selected Hospital",pass,"HCP dropdown shows 1 HCP(s) linked to selected hospital"
+Conditional Logic,Patient Registration Form,TC-PAT-019,"Changing the selected Hospital clears or resets the HCP Name field to prevent mismatched associations",pending,"Conditional HCP reset on hospital change — requires manual verification of app behavior"
+File Upload,Patient Registration Form,TC-PAT-020,"Uploading a valid PDF file as the Consent Form completes without error and shows confirmation or file name",pass,"PDF consent form uploaded via file chooser without error"
+File Upload,Patient Registration Form,TC-PAT-021,"Uploading an unsupported file type (e.g. .exe or .txt) as the Consent Form displays a file type restriction error",pending,"No file input found — cannot test file type rejection"
+File Upload,Patient Registration Form,TC-PAT-022,"Submitting the Patient form without uploading a Consent Form displays a required document error",pass,"Form blocked submission without Consent Form upload"
+File Upload,Patient Registration Form,TC-PAT-023,"After selecting a Consent Form file the file name or a preview is displayed in the upload area",pending,"File input not found — cannot test upload preview"
+Boundary Values,Patient Registration Form,TC-PAT-024,"Leaving all mandatory fields blank and clicking Submit displays validation errors for all required fields",pass,"Blank Patient form blocked submission"
+Boundary Values,Patient Registration Form,TC-PAT-025,"Entering a duplicate NRiC that already exists in the system displays an appropriate duplicate record error",pending,"Cannot retrieve previously used NRiC from created-data.json — NRiC not stored there"
+Data Integrity,Patient List,TC-PAT-026,"The created Patient record displays the correct Patient Name, NRiC, Hospital, and HCP in the Patient list view",fail,"""AutoPatient DF4169"" not found in Patient list — may be on different page"
+CRUD — Edit,Patient List,TC-PAT-027,"Opening an existing Patient record and editing the Contact Number then saving reflects the updated number in the record",pending,"Patient row for ""AutoPatient DF4169"" not visible in list"
+CRUD — Edit,Patient Registration Form,TC-PAT-028,"Clicking the Cancel or Close button on the Patient form without saving discards all entered data and closes the form",pending,
+Search and Filter,Patient List,TC-PAT-029,"Searching for a patient by name in the Patient list returns only matching records",pass,"Search returned matching patient"
+Search and Filter,Patient List,TC-PAT-030,"Searching for a patient by NRiC in the Patient list returns only the matching record",pass,"NRiC search returned records"
+Search and Filter,Patient List,TC-PAT-031,"Filtering the Patient list by Hospital shows only patients linked to the selected Hospital",pending,"Hospital filter option not found in filter dropdown"
+Search and Filter,Patient List,TC-PAT-032,"Filtering the Patient list by HCP shows only patients assigned to the selected HCP",pending,"HCP filter UI requires manual investigation — could not determine exact interaction pattern"
+Search and Filter,Patient List,TC-PAT-033,"Clicking the Clear Filters button resets all active filters and shows the full Patient list",pending,"Clear Filters button not visible — no active filters or button uses different label"
+Search and Filter,Patient List,TC-PAT-034,"Searching for a name that does not exist in the Patient list returns an empty result or 'No records found' message",pass,"Empty state shown for non-existent patient name"
+Pagination,Patient List,TC-PAT-035,"The Patient list displays pagination controls when the number of patient records exceeds the default page size",pending,"Pagination not visible — list may have fewer records than page size or pagination uses different component"
+Pagination,Patient List,TC-PAT-036,"Navigating to the next page of the Patient list shows the next set of records without errors",pending,"Next page button not found — insufficient records for pagination"
+Modals and Dialogs,Patient Registration Form,TC-PAT-037,"The Patient registration form modal opens without any pre-filled data when Add New Patient is clicked",pass,"Patient form opened with all fields empty"
+Modals and Dialogs,Patient Registration Form,TC-PAT-038,"Pressing Escape or clicking the overlay on the Patient form prompts confirmation before discarding unsaved data",pending,"Form still open and no confirmation dialog — Escape may not close the modal"
+Navigation,Patient List,TC-PAT-039,"Clicking 'Patient' in the sidebar navigates to the Patient list page",pass,"URL after navigation: https://zel3-sarapspstaging.zelthy.in/app/patient"
+Navigation,Patient List,TC-PAT-040,"The Patient list page loads without errors and displays column headers such as Patient Name, NRiC, Hospital, and HCP",pass,"24 column headers visible in Patient list"
+Error Handling,Patient Registration Form,TC-PAT-041,"A validation error summary is displayed near the Submit button listing all fields that failed validation when the form is submitted with errors",pass,"Validation errors shown on invalid patient form submission"
+Error Handling,Patient Registration Form,TC-PAT-042,"Individual field-level validation error messages appear directly below the field that failed validation",pass,"Field-level validation error visible below a failing field"
+Cross-Module,Patient Registration Form,TC-PAT-043,"A Hospital created in the Masters module is immediately selectable in the Patient registration Hospital Name dropdown without requiring a page refresh",pass,"Hospital ""AutoHospital_DF4169"" (created in Masters) is selectable in Patient form"
+Cross-Module,Patient Registration Form,TC-PAT-044,"An HCP created in the Masters module and mapped to a Hospital is selectable in the Patient registration HCP Name dropdown after selecting that Hospital",fail,"""AutoHCP_DF4169"" not found in HCP dropdown — may not be linked to selected hospital"
